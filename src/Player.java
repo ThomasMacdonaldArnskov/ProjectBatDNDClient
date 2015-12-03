@@ -1,12 +1,10 @@
 import org.newdawn.slick.*;
 
-/**
- * Created by TMA on 14-11-2015.
- */
 public class Player extends BasicGame {
 
     int xPos;
     int yPos;
+    private LightSource lightSource;
 
     public Player(String title) {
         super(title);
@@ -27,6 +25,6 @@ public class Player extends BasicGame {
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
         g.setColor(Color.white);
-        g.fillRect(xPos,yPos,32,32);
+        g.fillRect(xPos, yPos, 32, 32);
     }
 }

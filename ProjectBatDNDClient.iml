@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ibxm" level="project" />
+    <orderEntry type="library" name="lwjgl64" level="project" />
+    <orderEntry type="library" name="netty-all-5.0.0.Alpha1" level="project" />
   </component>
 </module>

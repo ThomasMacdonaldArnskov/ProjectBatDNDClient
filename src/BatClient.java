@@ -1,22 +1,15 @@
+import org.newdawn.slick.*;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 
-/**
- * Created by TMA on 12-11-2015.
- */
-public class BatClient extends BasicGame{
+public class BatClient extends BasicGame {
 
     //BattleMap battleMap;
     //Player player;
     FogOfWar fogOfWar = new FogOfWar();
 
-    public BatClient(String gamename)
-    {
+    public BatClient(String gamename) {
         super(gamename);
     }
 
@@ -33,30 +26,25 @@ public class BatClient extends BasicGame{
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
         //player.update(gc,i);
-        fogOfWar.update(gc,i);
+        fogOfWar.update(gc, i);
     }
 
     @Override
-    public void render(GameContainer gc, Graphics g) throws SlickException
-    {
-        fogOfWar.render(gc,g);
+    public void render(GameContainer gc, Graphics g) throws SlickException {
+        fogOfWar.render(gc, g);
         //player.render(gc, g);
     }
 
 
-    public static void main(String[] args)
-    {
-        try
-        {
+    public static void main(String[] args) {
+        try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new BatClient("Simple Slick Game"));
             appgc.setDisplayMode(1024, 768, false); //THIS SHOULD BE THE RESOLUTION OF OUR CURRENT PROJECTOR TOSHIBA TDP-T90
             appgc.setTargetFrameRate(60);
             appgc.setShowFPS(false);
             appgc.start();
-        }
-        catch (SlickException ex)
-        {
+        } catch (SlickException ex) {
             Logger.getLogger(BatClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

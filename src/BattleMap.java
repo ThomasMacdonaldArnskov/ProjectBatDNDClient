@@ -1,15 +1,11 @@
 import org.newdawn.slick.*;
 import org.newdawn.slick.tiled.TiledMap;
 
-/**
- * Created by TMA on 14-11-2015.
- */
-public class BattleMap extends BasicGame{
+public class BattleMap extends BasicGame {
 
     Image img, white, black;
-    Image [][] map;
+    Image[][] map;
     TiledMap battleMap;
-
 
 
     public BattleMap(String title) {
@@ -19,8 +15,8 @@ public class BattleMap extends BasicGame{
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
 
-        white = new Image ("assets/white.png");
-        black = new Image ("assets/black.png");
+        white = new Image("assets/white.png");
+        black = new Image("assets/black.png");
 
         //map = new Image[][]{ {white}, {white}};
 
@@ -32,9 +28,7 @@ public class BattleMap extends BasicGame{
             }
         }
 
-
-
-    img = new Image("assets/1024.png");
+        img = new Image("assets/1024.png");
         battleMap = new TiledMap("assets/dungeonmap.tmx");
 
     }
@@ -54,14 +48,14 @@ public class BattleMap extends BasicGame{
             map[0][0] = black;
         }
         Color alphaComponent;
-        alphaComponent = new Color(0,0,0,128);
+        alphaComponent = new Color(0, 0, 0, 128);
 
         g.setColor(alphaComponent);
 
         for (int i = 0; i < 32; i++) {
             for (int j = 0; j < 24; j++) {
 
-                g.drawImage(map[i][j], i*32, j*32);
+                g.drawImage(map[i][j], i * 32, j * 32);
 
             }
         }
