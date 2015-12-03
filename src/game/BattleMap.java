@@ -1,5 +1,12 @@
+package game;
+
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.tiled.TiledMap;
+
+import java.awt.*;
 
 public class BattleMap extends BasicGame {
 
@@ -54,9 +61,7 @@ public class BattleMap extends BasicGame {
 
         for (int i = 0; i < 32; i++) {
             for (int j = 0; j < 24; j++) {
-
                 g.drawImage(map[i][j], i * 32, j * 32);
-
             }
         }
 

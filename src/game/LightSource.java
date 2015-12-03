@@ -1,3 +1,5 @@
+package game;
+
 import org.newdawn.slick.Color;
 
 public class LightSource {

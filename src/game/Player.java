@@ -1,3 +1,5 @@
+package game;
+
 import org.newdawn.slick.*;
 
 public class Player extends BasicGame {

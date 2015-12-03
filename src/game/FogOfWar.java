@@ -1,3 +1,6 @@
+package game;
+
+import net.ClientChannelHandler;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
@@ -53,10 +56,10 @@ public class FogOfWar extends BasicGame {
         lights.clear();
 
         player1Light = new LightSource(player1X, player1Y, lightStrength, Color.lightGray);
-        player2Light = new LightSource(player2X, player2Y, lightStrength, Color.lightGray);
+        //player2Light = new LightSource(player2X, player2Y, lightStrength, Color.lightGray);
 
         lights.add(player1Light);
-        lights.add(player2Light);
+        //lights.add(player2Light);
 
         updateLightMap();
     }
@@ -94,30 +97,6 @@ public class FogOfWar extends BasicGame {
         if (container.getInput().isKeyPressed(Input.KEY_L)) {
             lightingOn = !lightingOn;
         }
-        if (container.getInput().isKeyDown(Input.KEY_LEFT)) {
-            lights.add(new LightSource(player2X, player2Y, lightStrength, Color.darkGray));
-            player2X -= 0.05f;
-            player2Light.setLightLocation(player2X, player2Y);
-            updateLightMap();
-        }
-        if (container.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            lights.add(new LightSource(player2X, player2Y, lightStrength, Color.darkGray));
-            player2X += 0.05f;
-            player2Light.setLightLocation(player2X, player2Y);
-            updateLightMap();
-        }
-        if (container.getInput().isKeyDown(Input.KEY_UP)) {
-            lights.add(new LightSource(player2X, player2Y, lightStrength, Color.darkGray));
-            player2Y -= 0.05f;
-            player2Light.setLightLocation(player2X, player2Y);
-            updateLightMap();
-        }
-        if (container.getInput().isKeyDown(Input.KEY_DOWN)) {
-            lights.add(new LightSource(player2X, player2Y, lightStrength, Color.darkGray));
-            player2Y += 0.05f;
-            player2Light.setLightLocation(player2X, player2Y);
-            updateLightMap();
-        }
         if (container.getInput().isKeyDown(Input.KEY_A)) {
             lights.add(new LightSource(player1X, player1Y, lightStrength, Color.darkGray));
             player1X -= 0.05f;
@@ -145,7 +124,6 @@ public class FogOfWar extends BasicGame {
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-
         tiles.startUse();
 
         for (int y = 0; y < HEIGHT; y++) {
@@ -169,7 +147,8 @@ public class FogOfWar extends BasicGame {
             }
         }
         tiles.endUse();
-
-
+        if (ClientChannelHandler.character.getFiducial().isActive())
+            g.drawOval((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),
+                    (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), 30, 30);
     }
 }
