@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/utils/AreaPulse.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/utils/AreaPulse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/AreaPulse.java" afterPath="$PROJECT_DIR$/src/utils/AreaPulse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/BatClient.java" afterPath="$PROJECT_DIR$/src/game/BatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/CharacterChooser.java" afterPath="$PROJECT_DIR$/src/game/gui/CharacterChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" afterPath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
@@ -194,6 +187,11 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -780,7 +778,7 @@
       <workItem from="1449172607366" duration="11525000" />
       <workItem from="1449259589941" duration="1222000" />
       <workItem from="1449279554064" duration="1291000" />
-      <workItem from="1449307255516" duration="17948000" />
+      <workItem from="1449307255516" duration="18444000" />
     </task>
     <task id="LOCAL-00001" summary="Started Doing Some Interface">
       <created>1449322081583</created>
@@ -792,7 +790,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31986000" />
+    <option name="totallyTimeSpent" value="32482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
