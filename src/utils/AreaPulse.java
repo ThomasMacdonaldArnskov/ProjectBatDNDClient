@@ -64,11 +64,9 @@ public class AreaPulse {
                     radius * 2, radius * 2);
 
             g.setColor(Color.white);
-            g.drawString(text,
-                    (int) centerPosition.getX() - g.getFont().getWidth(text) / 2,
-                    (int) centerPosition.getY() - g.getFont().getHeight(text) / 2);
-
-
+            GraphicsMethods.drawStrings(text,
+                    (int) centerPosition.getX(),
+                    (int) centerPosition.getY(), g);
         }
     }
 

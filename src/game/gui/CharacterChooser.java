@@ -17,7 +17,7 @@ public class CharacterChooser {
     private Point point;
 
     private boolean active;
-    private HeroClass currentHero = HeroClass.CLERIC;
+    private HeroClass currentHero = HeroClass.WIZARD;
     private AreaPulse miniPulse;
 
     public HeroClass getSelected() {
@@ -42,16 +42,26 @@ public class CharacterChooser {
         this.active = active;
     }
 
+    public boolean isActive() {
+        return this.active;
+    }
+
     public boolean isInside(Point point) {
         for (int i = 0; i < 3; i++) {
             float disX = (float) ((this.point.getX() + (50 * i)) - point.getX());
             float disY = (float) (this.point.getY() - point.getY());
             if (Math.sqrt((disX * disX) + (disY * disY)) < tinyFighter.getWidth() / 2) {
+                if (i == 0) currentHero = HeroClass.FIGHTER;
+                else if (i == 1) currentHero = HeroClass.WIZARD;
+                else if (i == 2) currentHero = HeroClass.CLERIC;
                 return true;
             }
         }
-
         return false;
+    }
+
+    public void setCurrentHero(HeroClass currentHero) {
+        this.currentHero = currentHero;
     }
 
     public void render(Graphics g) {
@@ -72,7 +82,8 @@ public class CharacterChooser {
                 miniPulse.setCenterPosition(
                         new Point((int) (point.getX() + 100) + tinyFighter.getWidth() / 2,
                                 (int) (point.getY()) + tinyFighter.getHeight() / 2));
-            miniPulse.render(g);
+            if (currentHero != HeroClass.CLASSLESS)
+                miniPulse.render(g);
             g.drawImage(tinyFighter, (float) point.getX(), (float) point.getY());
             g.drawImage(tinyWizard, (float) point.getX() + 50, (float) point.getY());
             g.drawImage(tinyCleric, (float) point.getX() + 100, (float) point.getY());
