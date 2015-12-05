@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/Icons.psd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/Actionbars/cleric.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/Actionbars/fighter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/Actionbars/wizard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/AreaPulse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/GraphicsMethods.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/StateMachine.java" />
-      <change type="DELETED" beforePath="F:\ProjectBatDNDClient\out\production\ProjectBatDNDClient\game\characters\Character.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/characters/HeroClass.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/characters/HeroClass.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/cleric_icon_small.png" afterPath="$PROJECT_DIR$/assets/img/cleric_icon_small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/fighter_icon_small.png" afterPath="$PROJECT_DIR$/assets/img/fighter_icon_small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/wizard_icon_small.png" afterPath="$PROJECT_DIR$/assets/img/wizard_icon_small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/BatClient.java" afterPath="$PROJECT_DIR$/src/game/BatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" afterPath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/FogOfWar.java" afterPath="$PROJECT_DIR$/src/game/FogOfWar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/characters/HeroClass.java" afterPath="$PROJECT_DIR$/src/game/characters/HeroClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/gui/CharacterChooser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\ProjectBatDNDClient\src\game\characters\Character.java" afterPath="$PROJECT_DIR$/src/game/characters/CharacterSheet.java" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,8 +72,8 @@
           <file leaf-file-name="CharacterChooser.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/gui/CharacterChooser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.17575757">
-                  <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.5401338">
+                  <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -170,7 +149,7 @@
           <file leaf-file-name="FiducialTransfer.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/commons/transfer/objects/FiducialTransfer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.1030303">
+                <state vertical-scroll-proportion="0.11371238">
                   <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
                   <folding />
                 </state>
@@ -746,12 +725,19 @@
       <workItem from="1449172607366" duration="11525000" />
       <workItem from="1449259589941" duration="1222000" />
       <workItem from="1449279554064" duration="1291000" />
-      <workItem from="1449307255516" duration="12533000" />
+      <workItem from="1449307255516" duration="12615000" />
     </task>
+    <task id="LOCAL-00001" summary="Started Doing Some Interface">
+      <created>1449322081583</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1449322081583</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26571000" />
+    <option name="totallyTimeSpent" value="26653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -759,13 +745,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2633833" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2633833" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16204691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -796,6 +782,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Started Doing Some Interface" />
+    <MESSAGE value="missed something" />
+    <option name="LAST_COMMIT_MESSAGE" value="missed something" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1149,7 +1140,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/commons/transfer/objects/FiducialTransfer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1030303">
+        <state vertical-scroll-proportion="0.11371238">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
@@ -1242,8 +1233,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gui/CharacterChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17575757">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5401338">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
