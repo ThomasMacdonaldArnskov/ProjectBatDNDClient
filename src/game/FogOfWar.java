@@ -2,7 +2,13 @@ package game;
 
 import net.ClientChannelHandler;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import utils.AreaPulse;
+import utils.GraphicsMethods;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +43,7 @@ public class FogOfWar extends BasicGame {
 
     public void init(GameContainer container) throws SlickException {
         tiles = new SpriteSheet("assets/tiles.png", 32, 32);
+
         generateMap();
     }
 
@@ -121,6 +128,7 @@ public class FogOfWar extends BasicGame {
             player1Light.setLightLocation(player1X, player1Y);
             updateLightMap();
         }
+
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
@@ -147,8 +155,5 @@ public class FogOfWar extends BasicGame {
             }
         }
         tiles.endUse();
-        if (ClientChannelHandler.character.getFiducial().isActive())
-            g.drawOval((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),
-                    (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), 30, 30);
     }
 }
