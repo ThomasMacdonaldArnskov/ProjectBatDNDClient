@@ -12,6 +12,10 @@ public class GraphicsMethods {
         return new TrueTypeFont(new Font(font.getName(), Font.PLAIN, size), true);
     }
 
+    public static TrueTypeFont getFont(int size, int fontType) {
+        return new TrueTypeFont(new Font(font.getName(), fontType, size), true);
+    }
+
     public static void drawStrings(String text, int x, int y, Graphics g) {
 
         String[] ln = text.split("/&");

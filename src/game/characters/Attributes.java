@@ -15,5 +15,11 @@ public class Attributes {
     private int HITPOINTS;
     private int INITIATIVE;
 
+    private int LEVEL;
+
+    public int getLEVEL() {
+        return LEVEL;
+    }
+
     //Skills
 }

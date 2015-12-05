@@ -17,7 +17,7 @@ public class CharacterChooser {
     private Point point;
 
     private boolean active;
-    private HeroClass currentHero = HeroClass.WIZARD;
+    private HeroClass currentHero = HeroClass.CLASSLESS;
     private AreaPulse miniPulse;
 
     public HeroClass getSelected() {

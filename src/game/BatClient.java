@@ -52,7 +52,7 @@ public class BatClient extends BasicGame {
         adminInterface.render(gc, g);
         g.setLineWidth(10);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
-        if (ClientChannelHandler.fiducials.get(0) != null)
+        if (!ClientChannelHandler.fiducials.isEmpty() && ClientChannelHandler.fiducials.get(0) != null)
             g.drawOval(
                     (int) ClientChannelHandler.fiducials.get(0).getPosition().getX() - 5,
                     (int) ClientChannelHandler.fiducials.get(0).getPosition().getY() - 5, 10, 10);

@@ -2,7 +2,7 @@ package game.gui;
 
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
-import game.characters.HeroClass;
+import game.characters.*;
 import game.objects.*;
 import game.objects.Button;
 import game.states.State;
@@ -17,16 +17,15 @@ import java.awt.*;
 
 public class AdminInterface extends StateMachine {
     private PlayerInterface[] players = new PlayerInterface[3];
+    private PlayerLobby lobby;
     private Point interfacePosition;
 
     private Font title = GraphicsMethods.getFont(20);
-    private Font regular = GraphicsMethods.getFont(13);
+    private Font regular = GraphicsMethods.getFont(12);
 
     public AdminInterface(Point interfacePosition) {
         super("AdminInterface");
         this.interfacePosition = interfacePosition;
-
-
     }
 
     @Override
@@ -34,6 +33,7 @@ public class AdminInterface extends StateMachine {
         players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
         players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
         players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 150), 0);
+        lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 250, (int) interfacePosition.getY() - 215));
         initStates();
         initState(STATE_WAITING, gc);
         for (PlayerInterface pi : players) {
@@ -42,16 +42,19 @@ public class AdminInterface extends StateMachine {
     }
 
     @Override
-    public void update(GameContainer gameContainer, int i) throws SlickException {
-        for (PlayerInterface pi : players) {
-            pi.update(gameContainer, i);
+    public void update(GameContainer gameContainer, int j) throws SlickException {
+        updateState(gameContainer,j);
+        for (int i = 0; i < players.length; i++) {
+            players[i].update(gameContainer, i);
         }
+
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         graphics.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), 270);
         renderState(graphics);
+        lobby.render(graphics);
         graphics.resetTransform();
         for (PlayerInterface pi : players) {
             pi.render(gameContainer, graphics);
@@ -62,7 +65,7 @@ public class AdminInterface extends StateMachine {
     public void initStates() {
         setWaitingState(new State(STATE_WAITING) {
             private Button startGame = new Button(new Point((int) interfacePosition.getX() - 55,
-                    (int) interfacePosition.getY()), 110, 45, "Start Game");
+                    (int) interfacePosition.getY() + 15), 110, 45, "Start Game");
 
             @Override
             public void initState(GameContainer gc) {
@@ -77,8 +80,12 @@ public class AdminInterface extends StateMachine {
             }
 
             @Override
-            public void updateState(GameContainer gc, int i) {
-
+            public void updateState(GameContainer gc, int j) {
+                for (int i = 0; i < players.length; i++) {
+                    if (players[i].getCharacter() != null) {
+                        lobby.update(i, players[i].getCharacter());
+                    }
+                }
             }
 
             @Override
@@ -90,12 +97,13 @@ public class AdminInterface extends StateMachine {
                         (int) interfacePosition.getX() - g.getFont().getWidth("Available Players") / 2,
                         (int) interfacePosition.getY() - 215);
                 g.setFont(regular);
-                for (int i = 0; i < players.length - 1; i++) {
+                for (int i = 0; i < players.length; i++) {
                     if (players[i].getChooser().getSelected() != HeroClass.CLASSLESS) {
-                        g.drawString(players[i].getChooser().getSelected().toString(),
+                        g.drawString("Player: " + i + " - " + players[i].getChooser().getSelected().toString(),
                                 (int) interfacePosition.getX() -
-                                        g.getFont().getWidth(players[i].getChooser().getSelected().toString()) / 2,
-                                (int) interfacePosition.getY() - 180);
+                                        g.getFont().getWidth("Player: " + i + " - " +
+                                                players[i].getChooser().getSelected().toString()) / 2,
+                                (int) interfacePosition.getY() - 180 + (i * g.getFont().getLineHeight()));
                     }
                 }
             }

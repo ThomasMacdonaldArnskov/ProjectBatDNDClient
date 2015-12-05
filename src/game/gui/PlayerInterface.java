@@ -77,6 +77,9 @@ public class PlayerInterface extends StateMachine {
                     pulse.setPulse(false);
                     chooser.setActive(true);
                     chooser.setCurrentHero(HeroClass.CLERIC);
+                    character = new CharacterSheet(
+                            NameRaceGenerator.getRaceAndName(chooser.getSelected()),
+                            chooser.getSelected(), new Attributes(), fiducial);
                 } else {
                     pulse.setPulse(true);
                     chooser.setActive(false);
