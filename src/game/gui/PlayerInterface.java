@@ -76,9 +76,16 @@ public class PlayerInterface extends StateMachine {
         ClientChannelHandler.fiducials.stream().filter(fi ->
                 pulse.isInside(fi.getPosition()) && fi.isActive()).forEach(fi -> this.fiducial = fi);
 
-        if (this.fiducial != null && !this.fiducial.isActive()) this.fiducial = null;
-        if (this.fiducial != null) {
+        if (this.fiducial != null &&
+                (!this.fiducial.isActive() ||
+                        !pulse.isInside(this.fiducial.getPosition()))) this.fiducial = null;
 
+        if (this.fiducial != null) {
+            pulse.setPulse(false);
+            chooser.setActive(true);
+        } else {
+            pulse.setPulse(true);
+            chooser.setActive(false);
         }
     }
 

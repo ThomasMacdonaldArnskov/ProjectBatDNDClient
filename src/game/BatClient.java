@@ -1,6 +1,7 @@
 package game;
 
 import game.gui.PlayerInterface;
+import net.ClientChannelHandler;
 import net.NetworkClient;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
@@ -26,8 +27,8 @@ public class BatClient extends BasicGame {
 
     public BatClient() {
         super("DnD Game");
-        //client = new NetworkClient(HOST_IP, PORT);
-        //new Thread(client).start();
+        client = new NetworkClient(HOST_IP, PORT);
+        new Thread(client).start();
     }
 
     @Override
@@ -38,7 +39,7 @@ public class BatClient extends BasicGame {
         // fogOfWar.init(gc);
         players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
         players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
-        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 75), 0);
+        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 150), 0);
 
         for (PlayerInterface pi : players) {
             pi.init(gc);
@@ -65,6 +66,10 @@ public class BatClient extends BasicGame {
         }
         g.setLineWidth(10);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
+        if (ClientChannelHandler.fiducials.get(0) != null)
+            g.drawOval(
+                    (int) ClientChannelHandler.fiducials.get(0).getPosition().getX() - 5,
+                    (int) ClientChannelHandler.fiducials.get(0).getPosition().getY() - 5, 10, 10);
     }
 
 

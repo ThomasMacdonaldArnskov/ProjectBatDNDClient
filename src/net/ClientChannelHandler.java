@@ -41,15 +41,16 @@ public class ClientChannelHandler extends ChannelHandler {
                     if (transferable instanceof FiducialTransfer) {
                         boolean notHere = true;
                         for (FiducialTransfer ft : fiducials) {
-                            if (ft.isEqual((FiducialTransfer) transferable)) {
+                            if (ft.isSame(((FiducialTransfer) transferable).getId())) {
                                 ft.update((FiducialTransfer) transferable);
+                                System.out.println(((FiducialTransfer) transferable).getPosition());
                                 notHere = false;
                             }
                         }
                         if (notHere) {
                             add.add((FiducialTransfer) transferable);
                         }
-                        System.out.println(transferable);
+
                     }
                 }
             }

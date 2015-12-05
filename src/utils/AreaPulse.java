@@ -14,6 +14,7 @@ public class AreaPulse {
     private boolean pulseOut;
 
     private boolean active;
+    private boolean pulse;
     private String text;
     private Color color;
 
@@ -24,29 +25,36 @@ public class AreaPulse {
         this.active = false;
         this.pulseRadius = radius * 2;
         this.pulseOut = true;
+        this.pulse = true;
         this.color = new Color(0, 0, 0);
     }
 
+    public void setPulse(boolean pulse) {
+        this.pulse = pulse;
+    }
+
     public void render(Graphics g) {
-        if (pulseOut && pulseRadius++ > radius * 3.5) {
+        if (pulse && pulseOut && pulseRadius++ > radius * 3.5) {
             pulseOut = false;
         }
-        if (!pulseOut && pulseRadius-- < radius * 2) {
+        if (pulse && !pulseOut && pulseRadius-- < radius * 2) {
             pulseOut = true;
         }
 
         if (active) {
             g.setAntiAlias(true);
             g.setLineWidth(10);
-            g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 50));
 
-            g.drawOval((int) centerPosition.getX() - (pulseRadius - 20) / 2,
-                    (int) centerPosition.getY() - (pulseRadius - 20) / 2,
-                    pulseRadius - 20, pulseRadius - 20);
-            g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 100));
-            g.drawOval((int) centerPosition.getX() - pulseRadius / 2,
-                    (int) centerPosition.getY() - pulseRadius / 2,
-                    pulseRadius, pulseRadius);
+            if (pulse) {
+                g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 50));
+                g.drawOval((int) centerPosition.getX() - (pulseRadius - 20) / 2,
+                        (int) centerPosition.getY() - (pulseRadius - 20) / 2,
+                        pulseRadius - 20, pulseRadius - 20);
+                g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 100));
+                g.drawOval((int) centerPosition.getX() - pulseRadius / 2,
+                        (int) centerPosition.getY() - pulseRadius / 2,
+                        pulseRadius, pulseRadius);
+            }
 
             g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 200));
             g.setLineWidth(6);
