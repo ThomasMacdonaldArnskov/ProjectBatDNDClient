@@ -18,6 +18,7 @@ import java.awt.*;
 public class AdminInterface extends StateMachine {
     private PlayerInterface[] players = new PlayerInterface[3];
     private PlayerLobby lobby;
+    private PlayerStatistics pStats;
     private Point interfacePosition;
 
     private Font title = GraphicsMethods.getFont(20);
@@ -28,12 +29,14 @@ public class AdminInterface extends StateMachine {
         this.interfacePosition = interfacePosition;
     }
 
+
     @Override
     public void init(GameContainer gc) throws SlickException {
-        players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
+        players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 150), 180);
         players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
         players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 150), 0);
-        lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 250, (int) interfacePosition.getY() - 215));
+        lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 250, (int) interfacePosition.getY() - 215), 270);
+        pStats = new PlayerStatistics(new Point((int) interfacePosition.getX() - 50, (int) interfacePosition.getY() - 215));
         initStates();
         initState(STATE_WAITING, gc);
         for (PlayerInterface pi : players) {
@@ -43,7 +46,7 @@ public class AdminInterface extends StateMachine {
 
     @Override
     public void update(GameContainer gameContainer, int j) throws SlickException {
-        updateState(gameContainer,j);
+        updateState(gameContainer, j);
         for (int i = 0; i < players.length; i++) {
             players[i].update(gameContainer, i);
         }
@@ -52,9 +55,10 @@ public class AdminInterface extends StateMachine {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), 270);
         renderState(graphics);
         lobby.render(graphics);
+        graphics.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), 270);
+
         graphics.resetTransform();
         for (PlayerInterface pi : players) {
             pi.render(gameContainer, graphics);
@@ -93,29 +97,28 @@ public class AdminInterface extends StateMachine {
                 startGame.render(g);
                 g.setFont(title);
                 g.setColor(new Color(255, 255, 255));
-                g.drawString("Available Players",
-                        (int) interfacePosition.getX() - g.getFont().getWidth("Available Players") / 2,
-                        (int) interfacePosition.getY() - 215);
-                g.setFont(regular);
-                for (int i = 0; i < players.length; i++) {
-                    if (players[i].getChooser().getSelected() != HeroClass.CLASSLESS) {
-                        g.drawString("Player: " + i + " - " + players[i].getChooser().getSelected().toString(),
-                                (int) interfacePosition.getX() -
-                                        g.getFont().getWidth("Player: " + i + " - " +
-                                                players[i].getChooser().getSelected().toString()) / 2,
-                                (int) interfacePosition.getY() - 180 + (i * g.getFont().getLineHeight()));
+                pStats.render(g);
+            }
+
+            @Override
+            public boolean fiducialInput(FiducialTransfer fiducial) {
+                return false;
+            }
+
+            @Override
+            public boolean blobInput(BlobTransfer blob) {
+                for (PlayerInterface pi : players) {
+                    if (pi.blobInput(blob)) {
+                        return true;
                     }
                 }
-            }
-
-            @Override
-            public void fiducialInput(FiducialTransfer fiducial) {
-
-            }
-
-            @Override
-            public void blobInput(BlobTransfer blob) {
-
+                for (PlayerAdminInterfaceButton paib : lobby.getPlayers()) {
+                    if (paib != null && paib.isPressed(blob.getPosition())) {
+                        pStats.update(players[paib.getPlayerNumber()].getCharacter());
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }

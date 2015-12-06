@@ -1,22 +1,19 @@
 package game;
 
+import commons.transfer.objects.BlobTransfer;
 import game.gui.AdminInterface;
-import game.gui.PlayerInterface;
 import net.ClientChannelHandler;
 import net.NetworkClient;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BatClient extends BasicGame {
 
-    //game.BattleMap battleMap;
-    //game.Player player;
-    private FogOfWar fogOfWar = new FogOfWar();
     private NetworkClient client;
     private AdminInterface adminInterface;
 
@@ -26,10 +23,17 @@ public class BatClient extends BasicGame {
     public static int WIDTH = 1024;
     public static int HEIGHT = 768;
 
+    public static BatClient batClient;
+
     public BatClient() {
         super("DnD Game");
         client = new NetworkClient(HOST_IP, PORT);
         new Thread(client).start();
+        BatClient.batClient = this;
+    }
+
+    public boolean pingBlob(BlobTransfer blob) {
+        return adminInterface.blobInput(blob);
     }
 
     @Override
@@ -40,17 +44,21 @@ public class BatClient extends BasicGame {
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        //player.update(gc,i);
-        //fogOfWar.update(gc, i);
         adminInterface.update(gc, i);
+        if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+            try {
+                client.getChannelHandler().channelRead(null, new BlobTransfer(30L, true, new Point(gc.getInput().getMouseX(), gc.getInput().getMouseY())));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
-        //fogOfWar.render(gc, g);
-        //player.render(gc, g);
         adminInterface.render(gc, g);
         g.setLineWidth(10);
+        g.setColor(Color.white);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
         if (!ClientChannelHandler.fiducials.isEmpty() && ClientChannelHandler.fiducials.get(0) != null)
             g.drawOval(

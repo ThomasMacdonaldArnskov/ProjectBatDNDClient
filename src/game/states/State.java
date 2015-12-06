@@ -27,7 +27,7 @@ public abstract class State {
 
     public abstract void renderState(Graphics g);
 
-    public abstract void fiducialInput(FiducialTransfer fiducial);
+    public abstract boolean fiducialInput(FiducialTransfer fiducial);
 
-    public abstract void blobInput(BlobTransfer blob);
+    public abstract boolean blobInput(BlobTransfer blob);
 }

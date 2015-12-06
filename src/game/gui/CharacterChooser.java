@@ -6,6 +6,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import utils.AreaPulse;
+import utils.TransformHitbox;
 
 import java.awt.*;
 
@@ -15,18 +16,23 @@ public class CharacterChooser {
     private Image tinyCleric;
 
     private Point point;
+    private int rotation;
 
     private boolean active;
     private HeroClass currentHero = HeroClass.CLASSLESS;
     private AreaPulse miniPulse;
 
+    private TransformHitbox[] hitbox;
+
     public HeroClass getSelected() {
         return currentHero;
     }
 
-    public CharacterChooser(Point point) {
+    public CharacterChooser(Point point, int rotation) {
         this.point = point;
+        this.rotation = rotation;
         this.active = false;
+
         try {
             tinyFighter = new Image("assets/img/fighter_icon_small.png");
             tinyWizard = new Image("assets/img/wizard_icon_small.png");
@@ -36,6 +42,7 @@ public class CharacterChooser {
         } catch (SlickException e) {
             e.printStackTrace();
         }
+        setHitboxes();
     }
 
     public void setActive(boolean active) {
@@ -46,14 +53,30 @@ public class CharacterChooser {
         return this.active;
     }
 
+    public void setHitboxes() {
+        this.hitbox = new TransformHitbox[3];
+        hitbox[0] = new TransformHitbox();
+        hitbox[1] = new TransformHitbox();
+        hitbox[2] = new TransformHitbox();
+
+        int width = tinyFighter.getWidth();
+        int height = tinyFighter.getHeight();
+        int y = (int) this.point.getY();
+        int x = (int) this.point.getX();
+        hitbox[0].rotateAroundPoint(rotation, new Rectangle(x, y, width, height),
+                (int) this.point.getX(), (int) this.point.getY());
+        hitbox[1].rotateAroundPoint(rotation, new Rectangle(x + 50, y, width, height),
+                (int) this.point.getX(), (int) this.point.getY());
+        hitbox[2].rotateAroundPoint(rotation, new Rectangle(x + 100, y, width, height),
+                (int) this.point.getX(), (int) this.point.getY());
+    }
+
     public boolean isInside(Point point) {
-        for (int i = 0; i < 3; i++) {
-            float disX = (float) ((this.point.getX() + (50 * i)) - point.getX());
-            float disY = (float) (this.point.getY() - point.getY());
-            if (Math.sqrt((disX * disX) + (disY * disY)) < tinyFighter.getWidth() / 2) {
-                if (i == 0) currentHero = HeroClass.FIGHTER;
-                else if (i == 1) currentHero = HeroClass.WIZARD;
-                else if (i == 2) currentHero = HeroClass.CLERIC;
+        for (int i = 0; i < hitbox.length; i++) {
+            if (hitbox[i].isHit((int) point.getX(), (int) point.getY())) {
+                if (i == 0) setCurrentHero(HeroClass.FIGHTER);
+                else if (i == 1) setCurrentHero(HeroClass.WIZARD);
+                else if (i == 2) setCurrentHero(HeroClass.CLERIC);
                 return true;
             }
         }
@@ -66,6 +89,7 @@ public class CharacterChooser {
 
     public void render(Graphics g) {
         if (active) {
+            g.rotate((int) this.point.getX(), (int)  this.point.getY(), rotation);
             miniPulse.setActive(true);
 
             g.setColor(new Color(255, 255, 255, 100));
@@ -87,6 +111,7 @@ public class CharacterChooser {
             g.drawImage(tinyFighter, (float) point.getX(), (float) point.getY());
             g.drawImage(tinyWizard, (float) point.getX() + 50, (float) point.getY());
             g.drawImage(tinyCleric, (float) point.getX() + 100, (float) point.getY());
+            g.resetTransform();
         } else {
             miniPulse.setActive(false);
         }

@@ -23,8 +23,7 @@ public class NameRaceGenerator {
             switch (race) {
                 case 0:
                     return new RaceName(Race.ELF, wizards[race][name]);
-                case 1:
-                    return new RaceName(Race.GNOME, wizards[race][name]);
+                case 1:                    return new RaceName(Race.GNOME, wizards[race][name]);
                 case 2:
                     return new RaceName(Race.THIEFLING, wizards[race][name]);
             }

@@ -6,6 +6,7 @@ import java.awt.*;
 
 import org.newdawn.slick.Color;
 import utils.GraphicsMethods;
+import utils.TransformHitbox;
 
 public class Button {
     protected Point position;
@@ -15,18 +16,19 @@ public class Button {
     protected ButtonAction action;
     protected ButtonGraphics graphics;
     protected boolean visible;
+    protected TransformHitbox hitbox;
 
     public Button(Point position, int width, int height, String text) {
-        this(position, width, height, text, () -> {
+        this(position, width, height, 0, text, () -> {
         }, standardButtonGraphics(), true);
     }
 
-    public Button(Point position, int width, int height, String text, boolean visible) {
-        this(position, width, height, text, () -> {
+    public Button(Point position, int width, int height, String text, int degrees, boolean visible) {
+        this(position, width, height, degrees, text, () -> {
         }, standardButtonGraphics(), visible);
     }
 
-    public Button(Point position, int width, int height, String text,
+    public Button(Point position, int width, int height, int degrees, String text,
                   ButtonAction action, ButtonGraphics graphics, boolean visible) {
         this.position = position;
         this.width = width;
@@ -35,11 +37,12 @@ public class Button {
         this.action = action;
         this.visible = visible;
         this.graphics = graphics;
+        this.hitbox = new TransformHitbox();
+        this.hitbox.rotateCenter(degrees, new Rectangle((int) position.getX(), (int) position.getY(), width, height));
     }
 
     public boolean isPressed(Point point) {
-        if (point.getX() >= this.position.getX() && point.getX() <= this.position.getX() + width &&
-                point.getY() >= this.position.getY() && point.getY() <= this.position.getY() + height) {
+        if (hitbox.isHit((int) point.getX(), (int) point.getY())) {
             action.action();
             return true;
         } else {
@@ -120,7 +123,7 @@ public class Button {
                 g.fillRect((int) button.getPosition().getX() + 3, (int) button.getPosition().getY() + 3,
                         button.getWidth() - 6, button.getHeight() - 6);
                 g.setColor(new Color(0, 0, 0, 255));
-                GraphicsMethods.drawStrings(button.getText(),
+                GraphicsMethods.drawStringsCentered(button.getText(),
                         (int) button.getPosition().getX() + button.getWidth() / 2,
                         (int) button.getPosition().getY() + button.getHeight() / 2, g);
 

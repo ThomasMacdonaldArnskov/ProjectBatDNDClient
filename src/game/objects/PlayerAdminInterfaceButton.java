@@ -4,8 +4,6 @@ import game.characters.CharacterSheet;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
-import org.newdawn.slick.Graphics;
-import utils.AreaPulse;
 import utils.GraphicsMethods;
 import org.newdawn.slick.Image;
 
@@ -19,8 +17,8 @@ public class PlayerAdminInterfaceButton extends Button {
     private Font name = GraphicsMethods.getFont(15, java.awt.Font.BOLD);
     private Font raceclass = GraphicsMethods.getFont(10, java.awt.Font.ITALIC);
 
-    public PlayerAdminInterfaceButton(int playerNumber, CharacterSheet characterSheet, Point position, ButtonAction action) {
-        super(position, 200, 55, characterSheet.toString(), action, (button, g) -> {
+    public PlayerAdminInterfaceButton(int playerNumber, CharacterSheet characterSheet, Point position, int rotate, ButtonAction action) {
+        super(position, 200, 55, rotate, characterSheet.toString(), action, (button, g) -> {
         }, true);
         this.characterSheet = characterSheet;
         this.playerNumber = playerNumber;
@@ -72,15 +70,5 @@ public class PlayerAdminInterfaceButton extends Button {
 
     public int getPlayerNumber() {
         return playerNumber;
-    }
-
-    public boolean isPressed(Point point) {
-        if (point.getX() >= this.position.getX() && point.getX() <= this.position.getX() + width &&
-                point.getY() >= this.position.getY() && point.getY() <= this.position.getY() + height) {
-            action.action();
-            return true;
-        } else {
-            return false;
-        }
     }
 }

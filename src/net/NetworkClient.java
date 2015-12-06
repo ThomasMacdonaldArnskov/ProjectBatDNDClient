@@ -31,9 +31,15 @@ public class NetworkClient implements Runnable {
         }
     }
 
+    private ClientChannelHandler channelHandler;
+
+    public ClientChannelHandler getChannelHandler() {
+        return channelHandler;
+    }
+
     @Override
     public void run() {
-        ClientChannelHandler channelHandler = new ClientChannelHandler();
+        channelHandler = new ClientChannelHandler();
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();

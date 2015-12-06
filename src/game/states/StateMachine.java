@@ -1,10 +1,13 @@
 package game.states;
 
 
+import commons.transfer.objects.BlobTransfer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+
+import java.awt.*;
 
 public abstract class StateMachine extends BasicGame {
     public static final int STATE_INACTIVE = -1;
@@ -116,6 +119,29 @@ public abstract class StateMachine extends BasicGame {
             default:
                 break;
         }
+    }
+
+    public boolean blobInput(BlobTransfer blobTransfer) {
+        switch (currentState) {
+            case STATE_INACTIVE:
+                if (inactiveState != null) return inactiveState.blobInput(blobTransfer);
+                break;
+            case STATE_ACTIVE:
+                if (activeState != null) activeState.blobInput(blobTransfer);
+                break;
+            case STATE_WAITING:
+                if (waitingState != null) waitingState.blobInput(blobTransfer);
+                break;
+            case STATE_JOIN:
+                if (joinState != null) joinState.blobInput(blobTransfer);
+                break;
+            case STATE_READY:
+                if (readyState != null) readyState.blobInput(blobTransfer);
+                break;
+            default:
+                break;
+        }
+        return false;
     }
 
     public void renderState(Graphics g) {

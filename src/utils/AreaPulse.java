@@ -1,8 +1,8 @@
 package utils;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.TrueTypeFont;
 
 import java.awt.*;
 
@@ -17,6 +17,7 @@ public class AreaPulse {
     private boolean pulse;
     private String text;
     private Color color;
+    private Font font = GraphicsMethods.getFont(13);
 
     public AreaPulse(String text, Point centerPosition, int radius) {
         this.text = text;
@@ -44,6 +45,7 @@ public class AreaPulse {
         if (active) {
             g.setAntiAlias(true);
             g.setLineWidth(10);
+            g.setFont(font);
 
             if (pulse) {
                 g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 50));
@@ -64,7 +66,7 @@ public class AreaPulse {
                     radius * 2, radius * 2);
 
             g.setColor(Color.white);
-            GraphicsMethods.drawStrings(text,
+            GraphicsMethods.drawStringsCentered(text,
                     (int) centerPosition.getX(),
                     (int) centerPosition.getY(), g);
         }

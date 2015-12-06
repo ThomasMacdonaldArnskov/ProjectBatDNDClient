@@ -3,6 +3,7 @@ package net;
 import commons.pipeline.ChannelHandler;
 import commons.transfer.TransferableObject;
 import commons.transfer.Transferables;
+import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
 import commons.transfer.objects.ScreenTransfer;
 import commons.transfer.objects.SimpleTransfer;
@@ -50,13 +51,20 @@ public class ClientChannelHandler extends ChannelHandler {
                         if (notHere) {
                             add.add((FiducialTransfer) transferable);
                         }
-
+                        fiducials.addAll(add.stream().collect(Collectors.toList()));
+                        add.clear();
+                        return;
+                    }
+                    if (transferable instanceof BlobTransfer) {
+                        if (BatClient.batClient != null) {
+                            BatClient.batClient.pingBlob(((BlobTransfer) transferable));
+                            return;
+                        }
                     }
                 }
             }
         }
-        fiducials.addAll(add.stream().collect(Collectors.toList()));
-        add.clear();
+
     }
 
     @Override
