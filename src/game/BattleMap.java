@@ -8,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.awt.*;
 import java.util.Map;
 
-public class BattleMap extends BasicGameState {
+public class BattleMap extends BasicGame {
 
     /**********************************
      * VARIABLES
@@ -33,7 +33,8 @@ public class BattleMap extends BasicGameState {
     /**********************************
      * CONSTRUCTOR
      **********************************/
-    public BattleMap(FogOfWar fogOfWar) {
+    public BattleMap(String title, FogOfWar fogOfWar) {
+        super(title);
         this.fogOfWar = fogOfWar;
     }
 
@@ -43,11 +44,11 @@ public class BattleMap extends BasicGameState {
      *********************************/
 
     @Override
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+    public void init(GameContainer gc) throws SlickException {
 
         fogOfWar.init(gc);
-        mapEditor = new MapEditor();
-        mapEditor.init(gc,sbg);
+        mapEditor = new MapEditor("MapEditor");
+        mapEditor.init(gc);
         map = new int[WIDTH][HEIGHT];
         preFabBattleMap();
         mapEditor.setMap(map);
@@ -55,9 +56,9 @@ public class BattleMap extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gc, int i) throws SlickException {
         fogOfWar.update(gc, i);
-        mapEditor.update(gc,stateBasedGame,i);
+        mapEditor.update(gc,i);
         //MAP TEST
         updateMap();
         map = mapEditor.getMap();
@@ -65,15 +66,11 @@ public class BattleMap extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+    public void render(GameContainer gc, Graphics g) throws SlickException {
         fogOfWar.render(gc, g);
-        mapEditor.render(gc,sbg, g);
+        mapEditor.render(gc, g);
     }
 
-    @Override
-    public int getID() {
-        return 0;
-    }
 
     /**********************************
      * METHODS

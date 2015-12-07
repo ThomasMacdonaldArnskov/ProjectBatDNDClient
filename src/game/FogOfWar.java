@@ -54,8 +54,8 @@ public class FogOfWar extends BasicGame {
         lights.clear();
 
         //SO THAT IT DRAWS THE LIGHT SOURCE ON THE FIDUCIAL POSITION!
-        fiducialLight = new LightSource((int) ClientChannelHandler.character.getFiducial().getPosition().getX(), (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), lightStrength, Color.lightGray);
-        lights.add(fiducialLight);
+        //fiducialLight = new LightSource((int) ClientChannelHandler.character.getFiducial().getPosition().getX(), (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), lightStrength, Color.lightGray);
+        //lights.add(fiducialLight);
 
         testLight = new LightSource(testLightX,testLightY,lightStrength,Color.white);
         lights.add(testLight);
@@ -93,7 +93,7 @@ public class FogOfWar extends BasicGame {
 
     public void update(GameContainer container, int delta) throws SlickException {
 
-        fiducialLight.setLightLocation((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),(int) ClientChannelHandler.character.getFiducial().getPosition().getY());
+        //fiducialLight.setLightLocation((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),(int) ClientChannelHandler.character.getFiducial().getPosition().getY());
 
         if (container.getInput().isKeyPressed(Input.KEY_L)) {
             lightingOn = !lightingOn;

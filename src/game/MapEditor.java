@@ -1,5 +1,6 @@
 package game;
 
+import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * you want to place it on the map.
  * Created by TMA on 05-12-2015.
  */
-public class MapEditor extends BasicGameState {
+public class MapEditor extends BasicGame {
 
 
     /**********************************
@@ -48,13 +49,15 @@ public class MapEditor extends BasicGameState {
     /**********************************
      * CONSTRUCTOR
      **********************************/
-    public MapEditor() {
+    public MapEditor(String title) {
+        super(title);
+        /*
         tileBank = new TileBank();
         uiContainer = new uiContainer(containerX, containerY);
         tileBank.setSelectedID(selectedTileID);
         groupTileSelected = tileBank.singleOrGroupTiles();
         buttons = new Button[44];
-        initializeButtons();
+        initializeButtons();*/
     }
 
     public void initializeButtons() {
@@ -116,19 +119,18 @@ public class MapEditor extends BasicGameState {
      * SLICK METHODS
      **********************************/
 
-
     @Override
-    public int getID() {
-        return 1;
+    public void init(GameContainer gc) throws SlickException {
+        tileBank = new TileBank();
+        uiContainer = new uiContainer(containerX, containerY);
+        tileBank.setSelectedID(selectedTileID);
+        groupTileSelected = tileBank.singleOrGroupTiles();
+        buttons = new Button[44];
+        initializeButtons();
     }
 
     @Override
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-
-    }
-
-    @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+    public void render(GameContainer gc, Graphics g) throws SlickException {
         uiContainer.UIContainer(g);
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].display(g);
@@ -136,7 +138,7 @@ public class MapEditor extends BasicGameState {
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+    public void update(GameContainer gc, int i) throws SlickException {
         setButtonPosition();
         mouseX = gc.getInput().getMouseX();
         mouseY = gc.getInput().getMouseY();
@@ -168,8 +170,6 @@ public class MapEditor extends BasicGameState {
      * If it is a group of tiles (doesn't make sense to just place one part of a single group,
      * and it is too tedious for the user to do so) is places the tiles with a grass fire algorithm
      * as long as the position where will be within the scope of the map matrix.
-     *
-     * @param gc : The slick2D GameContainer
      */
     public void placeTile() {
 

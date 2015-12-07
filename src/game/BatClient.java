@@ -7,18 +7,15 @@ import game.gui.AdminInterface;
 import net.ClientChannelHandler;
 import net.NetworkClient;
 import org.newdawn.slick.*;
-<<<<<<< HEAD
 import org.newdawn.slick.state.StateBasedGame;
-=======
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
->>>>>>> df2a8af86e3b70ce5cf4b1aa3a5225e49601cfe4
 
 import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BatClient extends StateBasedGame {
+public class BatClient extends BasicGame {
 
     game.BattleMap battleMap;
     private FogOfWar fogOfWar = new game.FogOfWar();
@@ -48,36 +45,32 @@ public class BatClient extends StateBasedGame {
         return adminInterface.fiducialInput(fiducial);
     }
 
-    @Override
-<<<<<<< HEAD
-    public void initStatesList(GameContainer gameContainer) throws SlickException {
-        this.addState(new BattleMap(fogOfWar));
-        this.addState(new MapEditor());
-    }
-
-=======
     public void init(GameContainer gc) throws SlickException {
-        adminInterface = new AdminInterface(new Point(gc.getWidth() - 75, gc.getHeight() / 2));
-        adminInterface.init(gc);
-        client = new NetworkClient(HOST_IP, PORT);
-        new Thread(client).start();
+        battleMap = new BattleMap("Battlemap",fogOfWar);
+        battleMap.init(gc);
+        //adminInterface = new AdminInterface(new Point(gc.getWidth() - 75, gc.getHeight() / 2));
+        //adminInterface.init(gc);
+        //client = new NetworkClient(HOST_IP, PORT);
+        //new Thread(client).start();
     }
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        adminInterface.update(gc, i);
-        if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+        //adminInterface.update(gc, i);
+        /*if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             try {
                 client.getChannelHandler().channelRead(null, new BlobTransfer(30L, true, new Point(gc.getInput().getMouseX(), gc.getInput().getMouseY())));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        }*/
+        battleMap.update(gc,i);
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
-        adminInterface.render(gc, g);
+        //adminInterface.render(gc, g);
+        battleMap.render(gc,g);
         g.setLineWidth(10);
         g.setColor(Color.white);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
@@ -88,8 +81,6 @@ public class BatClient extends StateBasedGame {
 
     }
 
-
->>>>>>> df2a8af86e3b70ce5cf4b1aa3a5225e49601cfe4
     public static void main(String[] args) {
         try {
             AppGameContainer appgc;
