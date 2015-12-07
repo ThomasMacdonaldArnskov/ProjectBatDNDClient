@@ -1,15 +1,11 @@
 package game;
 
-import net.ClientChannelHandler;
-import org.lwjgl.Sys;
+import game.map.BattleMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import utils.AreaPulse;
-import utils.GraphicsMethods;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +53,7 @@ public class FogOfWar extends BasicGame {
         //fiducialLight = new LightSource((int) ClientChannelHandler.character.getFiducial().getPosition().getX(), (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), lightStrength, Color.lightGray);
         //lights.add(fiducialLight);
 
-        testLight = new LightSource(testLightX,testLightY,lightStrength,Color.white);
+        testLight = new LightSource(testLightX, testLightY, lightStrength, Color.white);
         lights.add(testLight);
 
         updateLightMap();
@@ -133,7 +129,7 @@ public class FogOfWar extends BasicGame {
                 int tile = map[x][y];
                 Image image = tiles.getSubImage(tile % BattleMap.SPRITESHEET, tile / BattleMap.SPRITESHEET);
 
-                if (lightingOn) {
+                /*if (lightingOn) {
                     image.setColor(Image.TOP_LEFT, lightValue[x][y][0], lightValue[x][y][1], lightValue[x][y][2], 1);
                     image.setColor(Image.TOP_RIGHT, lightValue[x + 1][y][0], lightValue[x + 1][y][1], lightValue[x + 1][y][2], 1);
                     image.setColor(Image.BOTTOM_RIGHT, lightValue[x + 1][y + 1][0], lightValue[x + 1][y + 1][1], lightValue[x + 1][y + 1][2], 1);
@@ -144,14 +140,14 @@ public class FogOfWar extends BasicGame {
                     image.setColor(Image.TOP_RIGHT, light, light, light, 1);
                     image.setColor(Image.BOTTOM_RIGHT, light, light, light, 1);
                     image.setColor(Image.BOTTOM_LEFT, light, light, light, 1);
-                }
-                image.drawEmbedded(x * 32, y * 32, 32, 32);
+                }*/
+                image.drawEmbedded(x * BattleMap.SPRITESIZE, y * BattleMap.SPRITESIZE, BattleMap.SPRITESIZE, BattleMap.SPRITESIZE);
             }
         }
         tiles.endUse();
     }
 
-    public void setMap(int [][] map) {
+    public void setMap(int[][] map) {
         this.map = map;
     }
 }

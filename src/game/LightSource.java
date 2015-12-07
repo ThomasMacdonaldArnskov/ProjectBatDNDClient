@@ -1,5 +1,6 @@
 package game;
 
+import game.map.BattleMap;
 import org.newdawn.slick.Color;
 
 public class LightSource {

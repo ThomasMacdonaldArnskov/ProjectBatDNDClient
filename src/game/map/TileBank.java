@@ -1,4 +1,4 @@
-package game;
+package game.map;
 
 /**
  * The Tile Bank. Handles the parts of the sprite sheet that is grouped objects and which parts are not.

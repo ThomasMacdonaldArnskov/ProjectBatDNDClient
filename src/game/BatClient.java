@@ -4,20 +4,19 @@ import com.sun.istack.internal.NotNull;
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
 import game.gui.AdminInterface;
+import game.map.BattleMap;
 import net.ClientChannelHandler;
 import net.NetworkClient;
 import org.newdawn.slick.*;
-import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BatClient extends BasicGame {
 
-    game.BattleMap battleMap;
+    BattleMap battleMap;
     private FogOfWar fogOfWar = new game.FogOfWar();
 
     private NetworkClient client;
@@ -46,7 +45,7 @@ public class BatClient extends BasicGame {
     }
 
     public void init(GameContainer gc) throws SlickException {
-        battleMap = new BattleMap("Battlemap",fogOfWar);
+        battleMap = new BattleMap("Battlemap");
         battleMap.init(gc);
         //adminInterface = new AdminInterface(new Point(gc.getWidth() - 75, gc.getHeight() / 2));
         //adminInterface.init(gc);

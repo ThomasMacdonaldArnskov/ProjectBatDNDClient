@@ -1,4 +1,4 @@
-package game;
+package game.map;
 
 import org.newdawn.slick.*;
 
@@ -13,7 +13,6 @@ public class uiContainer {
 
     private Image uiContainer;
 
-
     public uiContainer(int initialX, int initialY) {
         this.xPos = initialX;
         this.yPos = initialY;
@@ -26,7 +25,7 @@ public class uiContainer {
     }
 
     public void UIContainer(Graphics g) {
-        g.drawImage(uiContainer,xPos, yPos);
+      g.drawImage(uiContainer,xPos, yPos);
     }
 
     public void setDragPosition(int x, int y) {

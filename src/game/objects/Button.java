@@ -64,6 +64,8 @@ public class Button {
     }
 
     public void setPosition(Point position) {
+        this.hitbox.rotateCenter(degrees,
+                new Rectangle((int) position.getX(), (int) position.getY(), width, height));
         this.position = position;
     }
 
@@ -139,5 +141,9 @@ public class Button {
 
             }
         };
+    }
+
+    public static boolean basicRectHitTest(int x, int y, int width, int height, int mouseX, int mouseY) {
+        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 }
