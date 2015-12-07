@@ -3,18 +3,20 @@ package net;
 import commons.pipeline.ChannelHandler;
 import commons.transfer.TransferableObject;
 import commons.transfer.Transferables;
+import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
 import commons.transfer.objects.ScreenTransfer;
 import commons.transfer.objects.SimpleTransfer;
 import game.BatClient;
-import game.characters.Character;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ClientChannelHandler extends ChannelHandler {
 
-    public static Character character = Character.generateCharacterFromFiducial(new FiducialTransfer(284l, true, new Point(0, 0)));
+    public static ArrayList<FiducialTransfer> fiducials = new ArrayList<>();
+    public static ArrayList<FiducialTransfer> add = new ArrayList<>();
 
     @Override
     public void channelActive(ChannelHandlerContext context) {
@@ -34,14 +36,32 @@ public class ClientChannelHandler extends ChannelHandler {
             for (Transferables transfer : Transferables.values()) {
                 if (transfer == transferable.getTransfer()) {
                     if (transferable instanceof FiducialTransfer) {
-                        if (character.getFiducial().isSame(((FiducialTransfer) transferable).getId())) {
-                            character.getFiducial().update((FiducialTransfer) transferable);
+                        BatClient.batClient.pingFiducial(((FiducialTransfer) transferable));
+                        boolean notHere = true;
+                        for (FiducialTransfer ft : fiducials) {
+                            if (ft.isSame(((FiducialTransfer) transferable).getId())) {
+                                ft.update((FiducialTransfer) transferable);
+                                System.out.println(((FiducialTransfer) transferable).getPosition());
+                                notHere = false;
+                            }
                         }
-                        System.out.println(transferable);
+                        if (notHere) {
+                            add.add((FiducialTransfer) transferable);
+                        }
+                        fiducials.addAll(add.stream().collect(Collectors.toList()));
+                        add.clear();
+                        return;
+                    }
+                    if (transferable instanceof BlobTransfer) {
+                        if (BatClient.batClient != null) {
+                            BatClient.batClient.pingBlob(((BlobTransfer) transferable));
+                            return;
+                        }
                     }
                 }
             }
         }
+
     }
 
     @Override
