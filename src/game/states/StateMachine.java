@@ -2,12 +2,11 @@ package game.states;
 
 
 import commons.transfer.objects.BlobTransfer;
+import commons.transfer.objects.FiducialTransfer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-
-import java.awt.*;
 
 public abstract class StateMachine extends BasicGame {
     public static final int STATE_INACTIVE = -1;
@@ -119,6 +118,29 @@ public abstract class StateMachine extends BasicGame {
             default:
                 break;
         }
+    }
+
+    public boolean fiducialInput(FiducialTransfer fiducial) {
+        switch (currentState) {
+            case STATE_INACTIVE:
+                if (inactiveState != null) return inactiveState.fiducialInput(fiducial);
+                break;
+            case STATE_ACTIVE:
+                if (activeState != null) activeState.fiducialInput(fiducial);
+                break;
+            case STATE_WAITING:
+                if (waitingState != null) waitingState.fiducialInput(fiducial);
+                break;
+            case STATE_JOIN:
+                if (joinState != null) joinState.fiducialInput(fiducial);
+                break;
+            case STATE_READY:
+                if (readyState != null) readyState.fiducialInput(fiducial);
+                break;
+            default:
+                break;
+        }
+        return false;
     }
 
     public boolean blobInput(BlobTransfer blobTransfer) {

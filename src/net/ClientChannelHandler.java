@@ -8,13 +8,9 @@ import commons.transfer.objects.FiducialTransfer;
 import commons.transfer.objects.ScreenTransfer;
 import commons.transfer.objects.SimpleTransfer;
 import game.BatClient;
-import game.characters.CharacterSheet;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.awt.*;
-import java.security.PublicKey;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class ClientChannelHandler extends ChannelHandler {
@@ -40,6 +36,7 @@ public class ClientChannelHandler extends ChannelHandler {
             for (Transferables transfer : Transferables.values()) {
                 if (transfer == transferable.getTransfer()) {
                     if (transferable instanceof FiducialTransfer) {
+                        BatClient.batClient.pingFiducial(((FiducialTransfer) transferable));
                         boolean notHere = true;
                         for (FiducialTransfer ft : fiducials) {
                             if (ft.isSame(((FiducialTransfer) transferable).getId())) {

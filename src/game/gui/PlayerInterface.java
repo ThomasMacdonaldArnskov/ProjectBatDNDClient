@@ -2,18 +2,19 @@ package game.gui;
 
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
-import game.characters.*;
+import game.characters.CharacterSheet;
+import game.characters.HeroClass;
+import game.characters.NameRaceGenerator;
 import game.objects.Button;
-import org.newdawn.slick.Font;
 import game.states.State;
+import game.states.StateMachine;
 import net.ClientChannelHandler;
-import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 import utils.AreaPulse;
-import game.states.StateMachine;
 import utils.GraphicsMethods;
-
 
 import java.awt.*;
 
@@ -123,7 +124,11 @@ public class PlayerInterface extends StateMachine {
             }
 
             @Override
-            public boolean fiducialInput(FiducialTransfer fiducial) {
+            public boolean fiducialInput(FiducialTransfer fi) {
+                if (pulse.isInside(fi.getPosition())) {
+                    fiducial = fi;
+                    return true;
+                }
                 return false;
             }
 

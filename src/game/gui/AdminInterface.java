@@ -2,15 +2,16 @@ package game.gui;
 
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
-import game.objects.*;
 import game.objects.Button;
+import game.objects.PlayerAdminInterfaceButton;
+import game.objects.PlayerLobby;
+import game.objects.PlayerStatistics;
 import game.states.State;
 import game.states.StateMachine;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
-import org.omg.PortableInterceptor.INACTIVE;
 import utils.GraphicsMethods;
 
 import java.awt.*;
@@ -125,6 +126,11 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public boolean fiducialInput(FiducialTransfer fiducial) {
+                for (PlayerInterface pi : players) {
+                    if (pi.fiducialInput(fiducial)) {
+                        return true;
+                    }
+                }
                 return false;
             }
 

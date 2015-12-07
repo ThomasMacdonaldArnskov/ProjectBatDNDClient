@@ -1,6 +1,8 @@
 package game;
 
+import com.sun.istack.internal.NotNull;
 import commons.transfer.objects.BlobTransfer;
+import commons.transfer.objects.FiducialTransfer;
 import game.gui.AdminInterface;
 import net.ClientChannelHandler;
 import net.NetworkClient;
@@ -27,8 +29,7 @@ public class BatClient extends BasicGame {
 
     public BatClient() {
         super("DnD Game");
-        client = new NetworkClient(HOST_IP, PORT);
-        new Thread(client).start();
+
         BatClient.batClient = this;
     }
 
@@ -36,10 +37,16 @@ public class BatClient extends BasicGame {
         return adminInterface.blobInput(blob);
     }
 
+    public boolean pingFiducial(@NotNull FiducialTransfer fiducial) {
+        return adminInterface.fiducialInput(fiducial);
+    }
+
     @Override
     public void init(GameContainer gc) throws SlickException {
         adminInterface = new AdminInterface(new Point(gc.getWidth() - 75, gc.getHeight() / 2));
         adminInterface.init(gc);
+        client = new NetworkClient(HOST_IP, PORT);
+        new Thread(client).start();
     }
 
     @Override
