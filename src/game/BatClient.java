@@ -67,10 +67,11 @@ public class BatClient extends BasicGame {
         g.setLineWidth(10);
         g.setColor(Color.white);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
-        if (!ClientChannelHandler.fiducials.isEmpty() && ClientChannelHandler.fiducials.get(0) != null)
-            g.drawOval(
-                    (int) ClientChannelHandler.fiducials.get(0).getPosition().getX() - 5,
-                    (int) ClientChannelHandler.fiducials.get(0).getPosition().getY() - 5, 10, 10);
+        if (!ClientChannelHandler.fiducials.isEmpty())
+            ClientChannelHandler.fiducials.stream().filter(fi -> fi != null && fi.isActive()).forEach(fi -> g.drawOval(
+                    (int) fi.getPosition().getX() - 5,
+                    (int) fi.getPosition().getY() - 5, 10, 10));
+
     }
 
 

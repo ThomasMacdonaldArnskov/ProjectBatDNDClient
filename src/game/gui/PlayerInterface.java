@@ -164,7 +164,10 @@ public class PlayerInterface extends StateMachine {
             }
 
             @Override
-            public boolean fiducialInput(FiducialTransfer fiducial) {
+            public boolean fiducialInput(FiducialTransfer fi) {
+                if (fiducial.isSame(fi.getId())) {
+                    return true;
+                }
                 return false;
             }
 
