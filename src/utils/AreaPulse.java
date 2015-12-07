@@ -1,8 +1,8 @@
 package utils;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.TrueTypeFont;
 
 import java.awt.*;
 
@@ -14,39 +14,57 @@ public class AreaPulse {
     private boolean pulseOut;
 
     private boolean active;
+    private boolean pulse;
     private String text;
     private Color color;
+    private Font font = GraphicsMethods.getFont(13);
+    private int rotation = 0;
 
     public AreaPulse(String text, Point centerPosition, int radius) {
+        this(text, centerPosition, radius, 0);
+    }
+
+    public AreaPulse(String text, Point centerPosition, int radius, int rotation) {
         this.text = text;
         this.radius = radius;
         this.centerPosition = centerPosition;
         this.active = false;
         this.pulseRadius = radius * 2;
         this.pulseOut = true;
+        this.pulse = true;
         this.color = new Color(0, 0, 0);
+        this.rotation = rotation;
+    }
+
+    public void setPulse(boolean pulse) {
+        this.pulse = pulse;
     }
 
     public void render(Graphics g) {
-        if (pulseOut && pulseRadius++ > radius * 3.5) {
+        if (pulse && pulseOut && pulseRadius++ > radius * 3.5) {
             pulseOut = false;
         }
-        if (!pulseOut && pulseRadius-- < radius * 2) {
+        if (pulse && !pulseOut && pulseRadius-- < radius * 2) {
             pulseOut = true;
         }
 
         if (active) {
+            g.pushTransform();
+            g.rotate((int) this.centerPosition.getX(), (int) this.centerPosition.getY(), rotation);
             g.setAntiAlias(true);
             g.setLineWidth(10);
-            g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 50));
+            g.setFont(font);
 
-            g.drawOval((int) centerPosition.getX() - (pulseRadius - 20) / 2,
-                    (int) centerPosition.getY() - (pulseRadius - 20) / 2,
-                    pulseRadius - 20, pulseRadius - 20);
-            g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 100));
-            g.drawOval((int) centerPosition.getX() - pulseRadius / 2,
-                    (int) centerPosition.getY() - pulseRadius / 2,
-                    pulseRadius, pulseRadius);
+            if (pulse) {
+                g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 50));
+                g.drawOval((int) centerPosition.getX() - (pulseRadius - 20) / 2,
+                        (int) centerPosition.getY() - (pulseRadius - 20) / 2,
+                        pulseRadius - 20, pulseRadius - 20);
+                g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 100));
+                g.drawOval((int) centerPosition.getX() - pulseRadius / 2,
+                        (int) centerPosition.getY() - pulseRadius / 2,
+                        pulseRadius, pulseRadius);
+            }
 
             g.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), 200));
             g.setLineWidth(6);
@@ -56,11 +74,10 @@ public class AreaPulse {
                     radius * 2, radius * 2);
 
             g.setColor(Color.white);
-            g.drawString(text,
-                    (int) centerPosition.getX() - g.getFont().getWidth(text) / 2,
-                    (int) centerPosition.getY() - g.getFont().getHeight(text) / 2);
-
-
+            GraphicsMethods.drawStringsCentered(text,
+                    (int) centerPosition.getX(),
+                    (int) centerPosition.getY(), g);
+            g.popTransform();
         }
     }
 

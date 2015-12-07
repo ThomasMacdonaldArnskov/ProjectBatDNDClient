@@ -1,22 +1,23 @@
 package game;
 
-import game.gui.PlayerInterface;
+import com.sun.istack.internal.NotNull;
+import commons.transfer.objects.BlobTransfer;
+import commons.transfer.objects.FiducialTransfer;
+import game.gui.AdminInterface;
+import net.ClientChannelHandler;
 import net.NetworkClient;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BatClient extends BasicGame {
 
-    //game.BattleMap battleMap;
-    //game.Player player;
-    private FogOfWar fogOfWar = new FogOfWar();
-    private PlayerInterface[] players = new PlayerInterface[3];
     private NetworkClient client;
+    private AdminInterface adminInterface;
 
     public static final String HOST_IP = "127.0.0.1"; //Local Host Kappa
     public static final int PORT = 5555;
@@ -24,47 +25,53 @@ public class BatClient extends BasicGame {
     public static int WIDTH = 1024;
     public static int HEIGHT = 768;
 
+    public static BatClient batClient;
+
     public BatClient() {
         super("DnD Game");
-        //client = new NetworkClient(HOST_IP, PORT);
-        //new Thread(client).start();
+
+        BatClient.batClient = this;
+    }
+
+    public boolean pingBlob(BlobTransfer blob) {
+        return adminInterface.blobInput(blob);
+    }
+
+    public boolean pingFiducial(@NotNull FiducialTransfer fiducial) {
+        return adminInterface.fiducialInput(fiducial);
     }
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-        //battleMap = new game.BattleMap("Battle Map");
-        //battleMap.init(gc);
-        //fogOfWar = new game.FogOfWar("game.FogOfWar");
-        // fogOfWar.init(gc);
-        players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
-        players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
-        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 75), 0);
-
-        for (PlayerInterface pi : players) {
-            pi.init(gc);
-        }
-        //player = new game.Player("game.Player");
-        //player.init(gc);
+        adminInterface = new AdminInterface(new Point(gc.getWidth() - 75, gc.getHeight() / 2));
+        adminInterface.init(gc);
+        client = new NetworkClient(HOST_IP, PORT);
+        new Thread(client).start();
     }
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        //player.update(gc,i);
-        //fogOfWar.update(gc, i);
-        for (PlayerInterface pi : players) {
-            pi.update(gc, i);
+        adminInterface.update(gc, i);
+        if (gc.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+            try {
+                client.getChannelHandler().channelRead(null, new BlobTransfer(30L, true, new Point(gc.getInput().getMouseX(), gc.getInput().getMouseY())));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
-        //fogOfWar.render(gc, g);
-        //player.render(gc, g);
-        for (PlayerInterface pi : players) {
-            pi.render(gc, g);
-        }
+        adminInterface.render(gc, g);
         g.setLineWidth(10);
+        g.setColor(Color.white);
         g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
+        if (!ClientChannelHandler.fiducials.isEmpty())
+            ClientChannelHandler.fiducials.stream().filter(fi -> fi != null && fi.isActive()).forEach(fi -> g.drawOval(
+                    (int) fi.getPosition().getX() - 5,
+                    (int) fi.getPosition().getY() - 5, 10, 10));
+
     }
 
 
@@ -72,7 +79,6 @@ public class BatClient extends BasicGame {
         try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new BatClient());
-            //appgc.setDisplayMode(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height, true);
             appgc.setDisplayMode(BatClient.WIDTH, BatClient.HEIGHT, false);
             appgc.setTargetFrameRate(60);
             appgc.setShowFPS(true);

@@ -3,17 +3,14 @@ package net;
 import commons.pipeline.ChannelHandler;
 import commons.transfer.TransferableObject;
 import commons.transfer.Transferables;
+import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
 import commons.transfer.objects.ScreenTransfer;
 import commons.transfer.objects.SimpleTransfer;
 import game.BatClient;
-import game.characters.CharacterSheet;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.awt.*;
-import java.security.PublicKey;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class ClientChannelHandler extends ChannelHandler {
@@ -39,23 +36,32 @@ public class ClientChannelHandler extends ChannelHandler {
             for (Transferables transfer : Transferables.values()) {
                 if (transfer == transferable.getTransfer()) {
                     if (transferable instanceof FiducialTransfer) {
+                        BatClient.batClient.pingFiducial(((FiducialTransfer) transferable));
                         boolean notHere = true;
                         for (FiducialTransfer ft : fiducials) {
-                            if (ft.isEqual((FiducialTransfer) transferable)) {
+                            if (ft.isSame(((FiducialTransfer) transferable).getId())) {
                                 ft.update((FiducialTransfer) transferable);
+                                System.out.println(((FiducialTransfer) transferable).getPosition());
                                 notHere = false;
                             }
                         }
                         if (notHere) {
                             add.add((FiducialTransfer) transferable);
                         }
-                        System.out.println(transferable);
+                        fiducials.addAll(add.stream().collect(Collectors.toList()));
+                        add.clear();
+                        return;
+                    }
+                    if (transferable instanceof BlobTransfer) {
+                        if (BatClient.batClient != null) {
+                            BatClient.batClient.pingBlob(((BlobTransfer) transferable));
+                            return;
+                        }
                     }
                 }
             }
         }
-        fiducials.addAll(add.stream().collect(Collectors.toList()));
-        add.clear();
+
     }
 
     @Override
