@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/BatClient.java" afterPath="$PROJECT_DIR$/src/game/BatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
@@ -40,8 +40,8 @@
       <file leaf-file-name="Attributes.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/characters/Attributes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41467065">
-              <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.49101797">
+              <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -745,7 +745,7 @@
       <workItem from="1449403070735" duration="30067000" />
       <workItem from="1449441920012" duration="621000" />
       <workItem from="1449448702349" duration="2000" />
-      <workItem from="1449479048604" duration="2976000" />
+      <workItem from="1449479048604" duration="3102000" />
     </task>
     <task id="LOCAL-00001" summary="Started Doing Some Interface">
       <created>1449322081583</created>
@@ -789,11 +789,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449480092325</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="PLZ WORK 1ST TIME">
+      <created>1449482038725</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1449482038725</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99380000" />
+    <option name="totallyTimeSpent" value="99506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -875,7 +881,8 @@
     <MESSAGE value="More Graphics!" />
     <MESSAGE value="started fixing my rotation fuckups! Great job Viktor, you did good you piece of shit" />
     <MESSAGE value="Fixed Fiducials" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Fiducials" />
+    <MESSAGE value="PLZ WORK 1ST TIME" />
+    <option name="LAST_COMMIT_MESSAGE" value="PLZ WORK 1ST TIME" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1290,8 +1297,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/characters/Attributes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41467065">
-          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.49101797">
+          <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
           <folding />
         </state>
       </provider>
