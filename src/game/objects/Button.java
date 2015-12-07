@@ -17,6 +17,7 @@ public class Button {
     protected ButtonGraphics graphics;
     protected boolean visible;
     protected TransformHitbox hitbox;
+    protected int degrees;
 
     public Button(Point position, int width, int height, String text) {
         this(position, width, height, 0, text, () -> {
@@ -38,7 +39,9 @@ public class Button {
         this.visible = visible;
         this.graphics = graphics;
         this.hitbox = new TransformHitbox();
-        this.hitbox.rotateCenter(degrees, new Rectangle((int) position.getX(), (int) position.getY(), width, height));
+        this.hitbox.rotateCenter(degrees,
+                new Rectangle((int) position.getX(), (int) position.getY(), width, height));
+        this.degrees = degrees;
     }
 
     public boolean isPressed(Point point) {
@@ -74,6 +77,10 @@ public class Button {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getDegrees() {
+        return degrees;
     }
 
     public void setHeight(int height) {
@@ -115,7 +122,9 @@ public class Button {
     public static ButtonGraphics standardButtonGraphics() {
         return (button, g) -> {
             if (button.isVisible()) {
-
+                g.pushTransform();
+                g.rotate((int) button.position.getX() + button.getWidth() / 2,
+                        (int) button.position.getY() + button.getHeight() / 2, button.getDegrees());
                 g.setLineWidth(2);
                 g.setColor(new Color(255, 255, 255, 255));
                 g.drawRect((int) button.getPosition().getX(), (int) button.getPosition().getY(),
@@ -126,6 +135,7 @@ public class Button {
                 GraphicsMethods.drawStringsCentered(button.getText(),
                         (int) button.getPosition().getX() + button.getWidth() / 2,
                         (int) button.getPosition().getY() + button.getHeight() / 2, g);
+                g.popTransform();
 
             }
         };

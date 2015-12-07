@@ -23,7 +23,7 @@ public class PlayerInterface extends StateMachine {
 
     private Point interfacePosition;
     private CharacterSheet character;
-    private AreaPulse pulse;
+
     private int rotation = 0;
     private FiducialTransfer fiducial;
     private CharacterChooser chooser;
@@ -32,11 +32,11 @@ public class PlayerInterface extends StateMachine {
     public PlayerInterface(Point interfacePosition, int rotation) {
         super("PlayerInterface");
         this.interfacePosition = interfacePosition;
-        pulse = new AreaPulse("", interfacePosition, 40);
+
         this.rotation = rotation;
         this.chooser = new CharacterChooser(
-                new Point((int) interfacePosition.getX() + 60,
-                        (int) interfacePosition.getY() - 45), rotation);
+                new Point((int) interfacePosition.getX() + (rotation > 90 ? -50 : +50),
+                        (int) interfacePosition.getY() + (rotation >= 90 ? +50 : -50)), rotation);
         initStates();
     }
 
@@ -53,24 +53,25 @@ public class PlayerInterface extends StateMachine {
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         renderState(graphics);
-        graphics.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), rotation);
-
-        graphics.resetTransform();
     }
 
     @Override
     public void initStates() {
         setWaitingState(new State(STATE_WAITING) {
-            private Button instalock = new Button(new Point((int) interfacePosition.getX() + 60,
-                    (int) interfacePosition.getY() + 14), 145, 26, rotation, "Lock Choice", () -> {
+            private AreaPulse pulse;
+            private Button instalock = new Button(
+                    new Point((int) interfacePosition.getX() + (rotation != 90 ? (rotation > 90 ? -200 : +52) : -85),
+                            (int) interfacePosition.getY() + (rotation != 90 ? (rotation > 90 ? -25 : -5) : 110)),
+                    145, 26, rotation, "Lock Choice", () -> {
                 if (chooser != null && chooser.getSelected() != HeroClass.CLASSLESS)
                     character = new CharacterSheet(
                             NameRaceGenerator.getRaceAndName(chooser.getSelected()),
-                            chooser.getSelected(), new Attributes(), fiducial);
+                            chooser.getSelected(), fiducial);
             }, Button.standardButtonGraphics(), true);
 
             @Override
             public void initState(GameContainer gc) {
+                pulse = new AreaPulse("", interfacePosition, 40, rotation);
                 pulse.setColor(new Color(175, 175, 175));
                 pulse.setText("Place/&Character");
                 pulse.setActive(true);
@@ -91,20 +92,22 @@ public class PlayerInterface extends StateMachine {
                         pulse.setPulse(false);
                         chooser.setActive(true);
                         //chooser.setCurrentHero(HeroClass.CLASSLESS);
+                        if (chooser.getSelected() != HeroClass.CLASSLESS) {
+                            instalock.setVisible(true);
+                        } else {
+                            instalock.setVisible(false);
+                        }
                     } else {
                         pulse.setPulse(true);
                         pulse.setText("Place/&Character");
                         chooser.setActive(false);
-                    }
-                    if (chooser.getSelected() != HeroClass.CLASSLESS) {
-                        instalock.setVisible(true);
-                    } else {
                         instalock.setVisible(false);
                     }
                 } else {
                     pulse.setActive(true);
                     pulse.setPulse(false);
                     pulse.setText("Hero Locked");
+                    instalock.setVisible(false);
                     chooser.setActive(false);
                     instalock.setVisible(false);
                 }
@@ -136,6 +139,32 @@ public class PlayerInterface extends StateMachine {
                         return true;
                     }
                 }
+                return false;
+            }
+        });
+        setActiveState(new State(STATE_ACTIVE) {
+            @Override
+            public void initState(GameContainer gc) {
+
+            }
+
+            @Override
+            public void updateState(GameContainer gc, int i) {
+
+            }
+
+            @Override
+            public void renderState(Graphics g) {
+
+            }
+
+            @Override
+            public boolean fiducialInput(FiducialTransfer fiducial) {
+                return false;
+            }
+
+            @Override
+            public boolean blobInput(BlobTransfer blob) {
                 return false;
             }
         });

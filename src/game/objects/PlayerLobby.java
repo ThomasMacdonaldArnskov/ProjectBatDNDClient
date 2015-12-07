@@ -30,8 +30,19 @@ public class PlayerLobby {
         return players;
     }
 
+    public boolean someoneReady() {
+        for (PlayerAdminInterfaceButton paib : players) {
+            if (paib.getPlayerNumber() > -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void render(Graphics g) {
+        g.pushTransform();
         g.rotate((int) point.getX(), (int) point.getY(), 270);
+        g.setFont(title);
         g.drawString("Players", (int) point.getX() - g.getFont().getWidth("Players") / 2, ((int) point.getY()));
         for (int i = 0; i < players.length; i++) {
             g.setFont(title);
@@ -41,7 +52,7 @@ public class PlayerLobby {
                 g.setColor(new org.newdawn.slick.Color(255, 255, 255, 255));
                 g.drawRect((int) p.getX(), (int) p.getY(), 200, 55);
                 g.drawString("Player " + i,
-                        (int) point.getX() - g.getFont().getWidth("Players") / 2,
+                        (int) point.getX() - g.getFont().getWidth("Player " + i) / 2,
                         ((int) p.getY() + g.getFont().getLineHeight() / 2));
             } else {
                 players[i].setPosition(p);
@@ -51,6 +62,6 @@ public class PlayerLobby {
                 players[i].render(g);
             }
         }
-        g.resetTransform();
+        g.popTransform();
     }
 }

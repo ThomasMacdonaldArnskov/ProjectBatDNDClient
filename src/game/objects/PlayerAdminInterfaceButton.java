@@ -13,7 +13,7 @@ public class PlayerAdminInterfaceButton extends Button {
 
     private CharacterSheet characterSheet;
     private Image classIcon;
-    private int playerNumber;
+    private int playerNumber = -1;
     private Font name = GraphicsMethods.getFont(15, java.awt.Font.BOLD);
     private Font raceclass = GraphicsMethods.getFont(10, java.awt.Font.ITALIC);
 

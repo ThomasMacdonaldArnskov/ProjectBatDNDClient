@@ -16,22 +16,20 @@ public class CharacterSheet {
         return name + "/&" + race + "/&" + heroClass;
     }
 
-    public CharacterSheet(String name, Race race, HeroClass heroClass,
-                          Attributes attributes, FiducialTransfer fiducial) {
+    public CharacterSheet(String name, Race race, HeroClass heroClass, FiducialTransfer fiducial) {
         this.heroClass = heroClass;
         this.fiducial = fiducial;
         this.name = name;
         this.race = race;
-        this.attributes = attributes;
+        this.attributes = new Attributes(this);
     }
 
-    public CharacterSheet(RaceName raceName, HeroClass heroClass,
-                          Attributes attributes, FiducialTransfer fiducial) {
+    public CharacterSheet(RaceName raceName, HeroClass heroClass, FiducialTransfer fiducial) {
         this.heroClass = heroClass;
         this.fiducial = fiducial;
         this.name = raceName.getName();
         this.race = raceName.getRace();
-        this.attributes = attributes;
+        this.attributes = new Attributes(this);
     }
 
     public FiducialTransfer getFiducial() {

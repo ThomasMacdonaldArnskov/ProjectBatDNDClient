@@ -18,8 +18,13 @@ public class AreaPulse {
     private String text;
     private Color color;
     private Font font = GraphicsMethods.getFont(13);
+    private int rotation = 0;
 
     public AreaPulse(String text, Point centerPosition, int radius) {
+        this(text, centerPosition, radius, 0);
+    }
+
+    public AreaPulse(String text, Point centerPosition, int radius, int rotation) {
         this.text = text;
         this.radius = radius;
         this.centerPosition = centerPosition;
@@ -28,6 +33,7 @@ public class AreaPulse {
         this.pulseOut = true;
         this.pulse = true;
         this.color = new Color(0, 0, 0);
+        this.rotation = rotation;
     }
 
     public void setPulse(boolean pulse) {
@@ -43,6 +49,8 @@ public class AreaPulse {
         }
 
         if (active) {
+            g.pushTransform();
+            g.rotate((int) this.centerPosition.getX(), (int) this.centerPosition.getY(), rotation);
             g.setAntiAlias(true);
             g.setLineWidth(10);
             g.setFont(font);
@@ -69,6 +77,7 @@ public class AreaPulse {
             GraphicsMethods.drawStringsCentered(text,
                     (int) centerPosition.getX(),
                     (int) centerPosition.getY(), g);
+            g.popTransform();
         }
     }
 

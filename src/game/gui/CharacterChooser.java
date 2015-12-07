@@ -89,6 +89,7 @@ public class CharacterChooser {
 
     public void render(Graphics g) {
         if (active) {
+            g.pushTransform();
             g.rotate((int) this.point.getX(), (int)  this.point.getY(), rotation);
             miniPulse.setActive(true);
 
@@ -111,7 +112,7 @@ public class CharacterChooser {
             g.drawImage(tinyFighter, (float) point.getX(), (float) point.getY());
             g.drawImage(tinyWizard, (float) point.getX() + 50, (float) point.getY());
             g.drawImage(tinyCleric, (float) point.getX() + 100, (float) point.getY());
-            g.resetTransform();
+            g.popTransform();
         } else {
             miniPulse.setActive(false);
         }
