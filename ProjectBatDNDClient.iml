@@ -10,5 +10,9 @@
     <orderEntry type="library" name="ibxm" level="project" />
     <orderEntry type="library" name="lwjgl64" level="project" />
     <orderEntry type="library" name="netty-all-5.0.0.Alpha1" level="project" />
+    <orderEntry type="library" name="lzma" level="project" />
+    <orderEntry type="library" name="xpp3-1.1.4c" level="project" />
+    <orderEntry type="library" name="TWL" level="project" />
+    <orderEntry type="library" name="TWLEffects" level="project" />
   </component>
 </module>

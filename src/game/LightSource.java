@@ -4,10 +4,19 @@ import org.newdawn.slick.Color;
 
 public class LightSource {
 
+    /**********************************
+     * VARIABLES
+     **********************************/
+
     private float _xPos, _yPos;
     private float _lightStrength;
     private Color _color;
 
+    /**********************************
+     * CONSTRUCTORS
+     **********************************/
+
+    //CONSTRUCTOR FOR FLOAT VALUES
     public LightSource(float xPos, float yPos, float lightStrength, Color color) {
 
         this._xPos = xPos;
@@ -15,12 +24,33 @@ public class LightSource {
         this._lightStrength = lightStrength;
         this._color = color;
     }
+    //CONSTRUCTOR FOR INT VALUES
+    public LightSource(int xPos, int yPos, float lightStrength, Color color) {
 
+        this._xPos = (float) xPos/ (float) BattleMap.SPRITESIZE;
+        this._yPos = (float) yPos/ (float) BattleMap.SPRITESIZE;
+        this._lightStrength = lightStrength;
+        this._color = color;
+
+    }
+
+    /**********************************
+     * METHODS
+     **********************************/
+
+    //SETS THE LOCATION OF A LIGHT
     public void setLightLocation(float x, float y) {
         this._xPos = x;
         this._yPos = y;
     }
 
+    //OVERLOADED FOR INT USE
+    public void setLightLocation(int x, int y) {
+        this._xPos = (float) x/ (float) BattleMap.SPRITESIZE;
+        this._yPos = (float) y/ (float) BattleMap.SPRITESIZE;
+    }
+
+    //GET THE EFFECT AT A SPECIFIC LOCATION
     public float[] getLightEffectAtLocation(float x, float y) {
 
         float dx = x - _xPos;

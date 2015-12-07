@@ -2,23 +2,23 @@ package game;
 
 import net.NetworkClient;
 import org.newdawn.slick.*;
-import org.newdawn.slick.Graphics;
+import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BatClient extends BasicGame {
+public class BatClient extends StateBasedGame {
 
-    //game.BattleMap battleMap;
-    //game.Player player;
-    private FogOfWar fogOfWar = new FogOfWar();
+    game.BattleMap battleMap;
+    private FogOfWar fogOfWar = new game.FogOfWar();
+
     private NetworkClient client;
 
     public static final String HOST_IP = "127.0.0.1"; //Local Host Kappa
     public static final int PORT = 5555;
 
-    public static int WIDTH = 1024;
-    public static int HEIGHT = 768;
+    public static final int WIDTH = 1024;
+    public static final int HEIGHT = 768;
 
     public BatClient() {
         super("DnD Game");
@@ -27,27 +27,10 @@ public class BatClient extends BasicGame {
     }
 
     @Override
-    public void init(GameContainer gc) throws SlickException {
-        //battleMap = new game.BattleMap("Battle Map");
-        //battleMap.init(gc);
-        //fogOfWar = new game.FogOfWar("game.FogOfWar");
-        fogOfWar.init(gc);
-        //player = new game.Player("game.Player");
-        //player.init(gc);
+    public void initStatesList(GameContainer gameContainer) throws SlickException {
+        this.addState(new BattleMap(fogOfWar));
+        this.addState(new MapEditor());
     }
-
-    @Override
-    public void update(GameContainer gc, int i) throws SlickException {
-        //player.update(gc,i);
-        fogOfWar.update(gc, i);
-    }
-
-    @Override
-    public void render(GameContainer gc, Graphics g) throws SlickException {
-        fogOfWar.render(gc, g);
-        //player.render(gc, g);
-    }
-
 
     public static void main(String[] args) {
         try {
