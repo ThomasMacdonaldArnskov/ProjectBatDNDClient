@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/BatClient.java" afterPath="$PROJECT_DIR$/src/game/BatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/map/BattleMap.java" afterPath="$PROJECT_DIR$/src/game/map/BattleMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/map/MapContainer.java" afterPath="$PROJECT_DIR$/src/game/map/MapContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/map/MapEditor.java" afterPath="$PROJECT_DIR$/src/game/map/MapEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/states/State.java" afterPath="$PROJECT_DIR$/src/game/states/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/states/StateMachine.java" afterPath="$PROJECT_DIR$/src/game/states/StateMachine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$2.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/State.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/State.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
@@ -32,13 +33,13 @@
     <favorites_list name="ProjectBatDNDClient" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55597013">
+    <splitter split-orientation="horizontal" split-proportion="0.5959488">
       <split-first>
         <leaf>
-          <file leaf-file-name="AdminInterface.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="AdminInterface.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/game/gui/AdminInterface.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28307256">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="127" column="57" selection-start-line="127" selection-start-column="57" selection-end-line="127" selection-end-column="57" />
                   <folding>
                     <element signature="e#6497#6498#0" expanded="true" />
@@ -67,11 +68,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FogOfWar.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="FogOfWar.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="4.6896553">
-                  <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+                <state vertical-scroll-proportion="0.731454">
+                  <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LightSource.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -960,7 +971,7 @@
       <workItem from="1449448702349" duration="2000" />
       <workItem from="1449479048604" duration="3102000" />
       <workItem from="1449501914393" duration="4000" />
-      <workItem from="1449501926139" duration="28490000" />
+      <workItem from="1449501926139" duration="29472000" />
     </task>
     <task id="LOCAL-00001" summary="Started Doing Some Interface">
       <created>1449322081583</created>
@@ -1016,11 +1027,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449525843264</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Partially OK">
+      <created>1449533371550</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1449533371550</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128000000" />
+    <option name="totallyTimeSpent" value="128982000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1105,7 +1122,8 @@
     <MESSAGE value="Fixed Fiducials" />
     <MESSAGE value="PLZ WORK 1ST TIME" />
     <MESSAGE value="Map Editor now saves and works with rest of the Software" />
-    <option name="LAST_COMMIT_MESSAGE" value="Map Editor now saves and works with rest of the Software" />
+    <MESSAGE value="Partially OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Partially OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1143,13 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1030303">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1472,14 +1483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.6896553">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1547,7 +1550,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gui/AdminInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28307256">
+        <state vertical-scroll-proportion="0.0">
           <caret line="127" column="57" selection-start-line="127" selection-start-column="57" selection-end-line="127" selection-end-column="57" />
           <folding>
             <element signature="e#6497#6498#0" expanded="true" />
@@ -1557,6 +1560,22 @@
             <element signature="e#7980#7981#0" expanded="true" />
             <element signature="e#8024#8025#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.731454">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
