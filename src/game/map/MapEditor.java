@@ -93,6 +93,16 @@ public class MapEditor extends BasicGame {
         mapButtons[41] = new MapButton(89);
         mapButtons[42] = new MapButton(34);
         mapButtons[43] = new MapButton(108);
+        mapButtons[44] = new MapButton(35);
+        mapButtons[45] = new MapButton(47);
+        mapButtons[46] = new MapButton(58);
+        mapButtons[47] = new MapButton(59);
+        mapButtons[48] = new MapButton(70);
+        mapButtons[49] = new MapButton(71);
+        mapButtons[50] = new MapButton(82);
+        mapButtons[51] = new MapButton(83);
+        mapButtons[52] = new MapButton(94);
+        mapButtons[53] = new MapButton(95);
 
         for (MapButton mapButton : mapButtons) {
             mapButton.setUiContainer(uiContainer);
@@ -110,7 +120,7 @@ public class MapEditor extends BasicGame {
         uiContainer = new uiContainer(containerX, containerY);
         tileBank.setSelectedID(selectedTileID);
         groupTileSelected = tileBank.singleOrGroupTiles();
-        mapButtons = new MapButton[44];
+        mapButtons = new MapButton[54];
         initializeButtons();
     }
 
@@ -230,6 +240,7 @@ public class MapEditor extends BasicGame {
             mapButtons[i + 35].setOffsetX(startXinContainer + 46 + i * 69);
             mapButtons[i + 35].setOffsetY(startYinContainer + 278);
         }
+
         mapButtons[37].setOffsetX(startXinContainer);
         mapButtons[37].setOffsetY(startYinContainer + 325);
 
@@ -250,6 +261,15 @@ public class MapEditor extends BasicGame {
 
         mapButtons[43].setOffsetX(startXinContainer);
         mapButtons[43].setOffsetY(startYinContainer + 420);
+
+        for (int i = 0; i < 6; i++) {
+            mapButtons[i + 44].setOffsetX(startXinContainer + i * 31);
+            mapButtons[i + 44].setOffsetY(startYinContainer + 504);
+        }
+        for (int i = 0; i < 4; i++) {
+            mapButtons[i + 50].setOffsetX(startXinContainer + i * 31);
+            mapButtons[i + 50].setOffsetY(startYinContainer + 533);
+        }
     }
 
     public boolean selectTile(int x, int y) {

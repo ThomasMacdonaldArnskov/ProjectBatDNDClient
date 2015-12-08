@@ -39,7 +39,7 @@ public class TileBank {
         if (       selectedID == 1 || selectedID == 10 || selectedID == 32 || selectedID == 56
                 || selectedID == 24 || selectedID == 26 || selectedID == 28 || selectedID == 30
                 || selectedID == 7 || selectedID == 62 || selectedID == 65 || selectedID == 86 || selectedID == 89
-                || selectedID == 60 || selectedID == 3 || selectedID == 108
+                || selectedID == 60 || selectedID == 3 || selectedID == 108 || selectedID == 34
            )
             multiTileSelected = true;
          else
@@ -76,6 +76,9 @@ public class TileBank {
         //4X2 TILES
         else if (selectedID == 3)
             returnedTileGroup = new int[4][2];
+
+        else if (selectedID == 34)
+            returnedTileGroup = new int[1][2];
 
         //4X3 TILES
         else

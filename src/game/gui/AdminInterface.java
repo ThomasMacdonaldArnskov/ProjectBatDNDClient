@@ -190,7 +190,7 @@ public class AdminInterface extends StateMachine {
             }
         });
         setInactiveState(new State(STATE_INACTIVE) {
-            private Button startGame = new Button(new Point(742, 625), 270, 125, 0, "Start Game", () -> {
+            private Button startGame = new Button(new Point(742, 700), 270, 50, 0, "Start Game", () -> {
                 setCurrentState(STATE_WAITING);
             }, Button.standardButtonGraphics(), true);
 
