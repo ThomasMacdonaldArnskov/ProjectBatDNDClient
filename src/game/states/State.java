@@ -25,7 +25,7 @@ public abstract class State {
 
     public abstract void updateState(GameContainer gc, int i);
 
-    public abstract void renderState(Graphics g);
+    public abstract void renderState(GameContainer gc, Graphics g);
 
     public abstract boolean fiducialInput(FiducialTransfer fiducial);
 

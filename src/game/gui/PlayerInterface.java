@@ -53,7 +53,7 @@ public class PlayerInterface extends StateMachine {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        renderState(graphics);
+        renderState(gameContainer,graphics);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class PlayerInterface extends StateMachine {
             }
 
             @Override
-            public void renderState(Graphics g) {
+            public void renderState(GameContainer gc, Graphics g) {
                 pulse.render(g);
                 chooser.render(g);
                 g.setFont(font);
@@ -159,7 +159,7 @@ public class PlayerInterface extends StateMachine {
             }
 
             @Override
-            public void renderState(Graphics g) {
+            public void renderState(GameContainer gc, Graphics g) {
 
             }
 

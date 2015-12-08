@@ -2,6 +2,7 @@ package game.gui;
 
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
+import game.map.BattleMap;
 import game.objects.Button;
 import game.objects.PlayerAdminInterfaceButton;
 import game.objects.PlayerLobby;
@@ -22,9 +23,9 @@ public class AdminInterface extends StateMachine {
     private PlayerStatistics pStats;
     private Point interfacePosition;
 
-
     private Font title = GraphicsMethods.getFont(20);
     private Font regular = GraphicsMethods.getFont(12);
+    private BattleMap battleMap;
 
     public AdminInterface(Point interfacePosition) {
         super("AdminInterface");
@@ -34,13 +35,13 @@ public class AdminInterface extends StateMachine {
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-        players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 150), 180);
-        players[1] = new PlayerInterface(new Point(250, gc.getHeight() / 2), 90);
-        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 150), 0);
+        players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
+        players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
+        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 75), 0);
         lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 205, (int) interfacePosition.getY() + 250), 270);
         pStats = new PlayerStatistics(new Point((int) interfacePosition.getX() - 135, (int) interfacePosition.getY() - 215));
         initStates();
-        initState(STATE_WAITING, gc);
+        initState(STATE_INACTIVE, gc);
         for (PlayerInterface pi : players) {
             pi.init(gc);
         }
@@ -56,14 +57,15 @@ public class AdminInterface extends StateMachine {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        renderState(graphics);
-        lobby.render(graphics);
-        graphics.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), 270);
+        renderState(gameContainer, graphics);
 
-        graphics.resetTransform();
-        for (PlayerInterface pi : players) {
-            pi.render(gameContainer, graphics);
+        if (currentState != STATE_INACTIVE) {
+            lobby.render(graphics);
+            for (PlayerInterface pi : players) {
+                pi.render(gameContainer, graphics);
+            }
         }
+
     }
 
     @Override
@@ -75,7 +77,6 @@ public class AdminInterface extends StateMachine {
                 for (PlayerInterface playerInterface : players) {
                     if (playerInterface.getCharacter() != null) {
                         ready = true;
-
                         break;
                     }
                 }
@@ -114,14 +115,22 @@ public class AdminInterface extends StateMachine {
             }
 
             @Override
-            public void renderState(Graphics g) {
+            public void renderState(GameContainer gc, Graphics g) {
                 startGame.render(g);
                 g.setFont(title);
                 g.setColor(new Color(255, 255, 255));
                 g.pushTransform();
                 g.rotate((int) interfacePosition.getX(), (int) interfacePosition.getY(), 270);
+
                 pStats.render(g);
                 g.popTransform();
+                try {
+                    battleMap.getMapContainer().setXY(140, 125);
+                    battleMap.getMapContainer().render(gc, g);
+
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -136,6 +145,7 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public boolean blobInput(BlobTransfer blob) {
+                System.out.println(blob.getPosition().getX() + " " + blob.getPosition().getY());
                 if (startGame.isPressed(blob.getPosition())) {
                     return true;
                 }
@@ -165,7 +175,7 @@ public class AdminInterface extends StateMachine {
             }
 
             @Override
-            public void renderState(Graphics g) {
+            public void renderState(GameContainer gc, Graphics g) {
 
             }
 
@@ -176,6 +186,57 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public boolean blobInput(BlobTransfer blob) {
+                return false;
+            }
+        });
+        setInactiveState(new State(STATE_INACTIVE) {
+            private Button startGame = new Button(new Point(742, 625), 270, 125, 0, "Start Game", () -> {
+                setCurrentState(STATE_WAITING);
+            }, Button.standardButtonGraphics(), true);
+
+            @Override
+            public void initState(GameContainer gc) {
+                battleMap = new BattleMap("Battlemap");
+                startGame.setVisible(true);
+                try {
+                    battleMap.init(gc);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void updateState(GameContainer gc, int i) {
+                try {
+                    battleMap.update(gc, i);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void renderState(GameContainer gc, Graphics g) {
+                try {
+                    startGame.render(g);
+                    battleMap.render(gc, g);
+
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public boolean fiducialInput(FiducialTransfer fiducial) {
+                return false;
+            }
+
+            @Override
+            public boolean blobInput(BlobTransfer blob) {
+                if (battleMap.blobInput(blob)) return true;
+                if (startGame.isPressed(blob.getPosition())) {
+                    return true;
+                }
                 return false;
             }
         });

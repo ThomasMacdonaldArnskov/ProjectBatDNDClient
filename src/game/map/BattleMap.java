@@ -1,5 +1,7 @@
 package game.map;
 
+import commons.transfer.objects.BlobTransfer;
+import game.characters.HeroClass;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
 
@@ -24,17 +26,13 @@ public class BattleMap extends BasicGame {
     private MapContainer mapContainer;
     int[][] map;
 
-
-    /**********************************
-     * CONSTRUCTOR
-     **********************************/
     public BattleMap(String title) {
         super(title);
     }
 
-    /**********************************
-     * SLICK METHODS
-     *********************************/
+    public MapContainer getMapContainer() {
+        return mapContainer;
+    }
 
     @Override
     public void init(GameContainer gc) throws SlickException {
@@ -43,26 +41,24 @@ public class BattleMap extends BasicGame {
         mapEditor = new MapEditor("MapEditor", mapContainer);
         mapEditor.init(gc);
     }
-    boolean ok = true;
+
+
+    public boolean blobInput(BlobTransfer blob) {
+        if (mapContainer.subHit((int) blob.getPosition().getX(), (int) blob.getPosition().getY())) {
+            return true;
+        }
+        if (mapEditor.blobInput(blob)) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
         mapEditor.update(gc, i);
         //MAP TEST
         updateMap();
         map = mapContainer.getCurrentMap().getMap();
-
-        if (ok && gc.getInput().isMouseButtonDown(0)) {
-            mapContainer.subHit(gc.getInput().getMouseX(), gc.getInput().getMouseY());
-            ok = false;
-        }
-
-        if (!gc.getInput().isMouseButtonDown(0)) {
-            ok = true;
-        }
-
-        if (gc.getInput().isKeyPressed(Input.KEY_A)) {
-            Map.saveMap(map);
-        }
     }
 
     @Override

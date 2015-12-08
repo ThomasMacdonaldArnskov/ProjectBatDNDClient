@@ -166,22 +166,22 @@ public abstract class StateMachine extends BasicGame {
         return false;
     }
 
-    public void renderState(Graphics g) {
+    public void renderState(GameContainer gc, Graphics g) {
         switch (currentState) {
             case STATE_INACTIVE:
-                if (inactiveState != null) inactiveState.renderState(g);
+                if (inactiveState != null) inactiveState.renderState(gc,g);
                 break;
             case STATE_ACTIVE:
-                if (activeState != null) activeState.renderState(g);
+                if (activeState != null) activeState.renderState(gc,g);
                 break;
             case STATE_WAITING:
-                if (waitingState != null) waitingState.renderState(g);
+                if (waitingState != null) waitingState.renderState(gc,g);
                 break;
             case STATE_JOIN:
-                if (joinState != null) joinState.renderState(g);
+                if (joinState != null) joinState.renderState(gc,g);
                 break;
             case STATE_READY:
-                if (readyState != null) readyState.renderState(g);
+                if (readyState != null) readyState.renderState(gc,g);
                 break;
             default:
                 break;

@@ -19,6 +19,11 @@ public class MapContainer {
 
     private int folderpos = 0;
 
+    public void setXY(int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+
     public MapContainer(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;

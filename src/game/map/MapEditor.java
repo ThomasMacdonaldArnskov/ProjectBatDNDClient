@@ -1,5 +1,6 @@
 package game.map;
 
+import commons.transfer.objects.BlobTransfer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -31,10 +32,7 @@ public class MapEditor extends BasicGame {
 
     int containerX = 738;   //Initial position of the UI container
     int containerY = 7;   //Initial position of the UI container
-    int x;                  //x in tiles
-    int y;                  //y in tiles
-    int mouseX;
-    int mouseY;
+
     int selectedTileID = 0;
 
     private MapButton[] mapButtons;
@@ -124,26 +122,21 @@ public class MapEditor extends BasicGame {
         }
     }
 
+    public boolean blobInput(BlobTransfer blob) {
+        if (selectTile((int) blob.getPosition().getX(), (int) blob.getPosition().getY())) {
+            return true;
+        }
+        if (placeTile((int) blob.getPosition().getX(), (int) blob.getPosition().getY())) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
         setButtonPosition();
-
-        mouseX = gc.getInput().getMouseX();
-        mouseY = gc.getInput().getMouseY();
-
-        x = (int) mapContainer.getMapPos(mouseX, mouseY).getX();
-        y = (int) mapContainer.getMapPos(mouseX, mouseY).getY();
-
         containerX = uiContainer.getContainerX();
         containerY = uiContainer.getContainerY();
-
-        mouseInputClicked = gc.getInput().isMousePressed(0);
-        mouseDown = gc.getInput().isMouseButtonDown(0);
-        if (mouseInputClicked)
-            System.out.println("X " + mouseX + " Y " + mouseY);
-
-        selectTile();
-        placeTile();
     }
 
 
@@ -157,25 +150,27 @@ public class MapEditor extends BasicGame {
      * and it is too tedious for the user to do so) is places the tiles with a grass fire algorithm
      * as long as the position where will be within the scope of the map matrix.
      */
-    public void placeTile() {
-
-
+    public boolean placeTile(int x, int y) {
         //IF IT IS A SINGLE TILE, NO WORRIES JUST PLACE THAT SUCKER ON THE MAP
-        if (x > -1 && y > -1)
-            if (mouseInputClicked && !groupTileSelected) {
-                mapContainer.getCurrentMap().getMap()[x][y] = selectedTileID;
-            } else if (mouseInputClicked) {
+        int x1 = (int) mapContainer.getMapPos(x, y).getX();
+        int y1 = (int) mapContainer.getMapPos(x, y).getY();
+        if (x1 > -1 && y1 > -1)
+            if (!groupTileSelected) {
+                mapContainer.getCurrentMap().getMap()[x1][y1] = selectedTileID;
+            } else {
                 tileSelector(tileBank.returnedMultiArr());
                 //CHECK IF THE SELECTED TILE GROUP IS PLACED WITHIN THE GRID OF THE MAP
-                if (y < mapContainer.getCurrentMap().getMap()[0].length - tileStore.get(0).length + 1
-                        && x < mapContainer.getCurrentMap().getMap().length - tileStore.get(0)[0].length + 1) {
+                if (x1 < mapContainer.getCurrentMap().getMap()[0].length - tileStore.get(0).length + 1
+                        && x1 < mapContainer.getCurrentMap().getMap().length - tileStore.get(0)[0].length + 1) {
                     for (int i = 0; i < tileStore.get(0).length; i++) {
                         for (int j = 0; j < tileStore.get(0)[0].length; j++) {
-                            mapContainer.getCurrentMap().getMap()[j + x][i + y] = tileStore.get(0)[i][j];
+                            mapContainer.getCurrentMap().getMap()[j + x1][i + y1] = tileStore.get(0)[i][j];
                         }
                     }
+                    return true;
                 }
             }
+        return false;
     }
 
     /**
@@ -198,7 +193,6 @@ public class MapEditor extends BasicGame {
 
         int startXinContainer = 16;
         int startYinContainer = 32;
-
 
         for (int i = 0; i < 6; i++) {
             mapButtons[i].setOffsetX(startXinContainer + i * 31);
@@ -258,15 +252,16 @@ public class MapEditor extends BasicGame {
         mapButtons[43].setOffsetY(startYinContainer + 420);
     }
 
-    public void selectTile() {
+    public boolean selectTile(int x, int y) {
         for (MapButton mapButton : mapButtons) {
-            if (mapButton.returnConfines(mouseX, mouseY) && mouseInputClicked) {
+            if (mapButton.returnConfines(x, y)) {
                 groupTileSelected = tileBank.singleOrGroupTiles();
                 selectedTileID = mapButton.getTileNo();
                 tileBank.setSelectedID(selectedTileID);
                 groupTileSelected = tileBank.singleOrGroupTiles();
-                break;
+                return true;
             }
         }
+        return false;
     }
 }
