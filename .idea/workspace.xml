@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="Partially OK">
-      <change type="DELETED" beforePath="D:\Github\ProjectBatDNDClient\out\production\ProjectBatDNDClient\game\Player.class" afterPath="" />
+    <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" />
-      <change type="MODIFICATION" beforePath="D:\Github\ProjectBatDNDClient\out\production\ProjectBatDNDClient\game\LightSource.class" afterPath="D:\Github\ProjectBatDNDClient\out\production\ProjectBatDNDClient\game\LightSource.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" />
@@ -17,19 +15,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerLobby.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerLobby.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/BatClient.java" afterPath="$PROJECT_DIR$/src/game/BatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/map/BattleMap.java" afterPath="$PROJECT_DIR$/src/game/map/BattleMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" afterPath="$PROJECT_DIR$/src/net/ClientChannelHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maps/DnDMap1.txt" afterPath="$PROJECT_DIR$/maps/DnDMap1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/FogOfWar.java" afterPath="$PROJECT_DIR$/src/game/FogOfWar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/LightSource.java" afterPath="$PROJECT_DIR$/src/game/LightSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/map/MapContainer.java" afterPath="$PROJECT_DIR$/src/game/map/MapContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/states/StateMachine.java" afterPath="$PROJECT_DIR$/src/game/states/StateMachine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/characters/Player.java" afterPath="$PROJECT_DIR$/src/game/characters/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Github\ProjectBatDNDClient\src\game\Player.java" afterPath="$PROJECT_DIR$/src/game/characters/Player.java" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -234,8 +221,8 @@
           <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8028985">
-                  <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.67971015">
+                  <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -322,8 +309,8 @@
         <option value="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
         <option value="$PROJECT_DIR$/src/game/FogOfWar.java" />
         <option value="$PROJECT_DIR$/src/game/map/MapContainer.java" />
-        <option value="$PROJECT_DIR$/src/game/characters/Player.java" />
         <option value="$PROJECT_DIR$/src/game/LightSource.java" />
+        <option value="$PROJECT_DIR$/src/game/characters/Player.java" />
       </list>
     </option>
   </component>
@@ -1013,7 +1000,7 @@
       <workItem from="1449501914393" duration="4000" />
       <workItem from="1449501926139" duration="29472000" />
       <workItem from="1449588578161" duration="1640000" />
-      <workItem from="1449648968895" duration="12890000" />
+      <workItem from="1449648968895" duration="12953000" />
     </task>
     <task id="LOCAL-00001" summary="Started Doing Some Interface">
       <created>1449322081583</created>
@@ -1075,11 +1062,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449533371550</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="BrokenLight">
+      <created>1449664187448</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1449664187448</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143512000" />
+    <option name="totallyTimeSpent" value="143575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1165,7 +1158,8 @@
     <MESSAGE value="PLZ WORK 1ST TIME" />
     <MESSAGE value="Map Editor now saves and works with rest of the Software" />
     <MESSAGE value="Partially OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Partially OK" />
+    <MESSAGE value="BrokenLight" />
+    <option name="LAST_COMMIT_MESSAGE" value="BrokenLight" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1584,16 +1578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8028985">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3347826">
@@ -1603,6 +1587,16 @@
             <element signature="e#1103#1104#0" expanded="true" />
             <element signature="e#1137#1138#0" expanded="true" />
             <element signature="e#1167#1168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67971015">
+          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

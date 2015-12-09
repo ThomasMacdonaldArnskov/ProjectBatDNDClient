@@ -34,8 +34,6 @@ public class Player extends BasicGame {
                 (int) cs.getFiducial().getPosition().getY());
         this.xPos = (int) point.getX();
         this.yPos = (int) point.getY();
-        System.out.println("XP: " + (int) cs.getFiducial().getPosition().getX() + " X1 " + xPos);
-        System.out.println("YP: " + (int) cs.getFiducial().getPosition().getY() + " Y1 " + yPos);
         if (xPos == -1 || yPos == -1) lightSource.setEnabled(false);
         else lightSource.setEnabled(true);
         lightSource.setLightLocation(xPos, yPos);
