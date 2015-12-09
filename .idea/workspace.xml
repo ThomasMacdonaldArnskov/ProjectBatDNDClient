@@ -4,18 +4,18 @@
     <list default="true" id="4952cd6d-bbe9-44d7-94c0-f65fe2abb134" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/AdminInterface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/characters/Attributes.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/characters/Attributes.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/BatClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/net/ClientChannelHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/FogOfWar.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/Button.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/Button.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/LightSource.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/LightSource.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerAdminInterfaceButton.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$2.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/gui/PlayerInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerLobby.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/objects/PlayerLobby.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" afterPath="$PROJECT_DIR$/out/production/ProjectBatDNDClient/game/states/StateMachine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" afterPath="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/characters/Player.java" afterPath="$PROJECT_DIR$/src/game/characters/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectBatDNDClient.iws" />
@@ -38,19 +38,15 @@
     <favorites_list name="ProjectBatDNDClient" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5405117">
+    <splitter split-orientation="horizontal" split-proportion="0.5362473">
       <split-first>
         <leaf>
-          <file leaf-file-name="AdminInterface.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="AdminInterface.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/gui/AdminInterface.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="215" column="46" selection-start-line="215" selection-start-column="46" selection-end-line="215" selection-end-column="46" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1200#1201#0" expanded="true" />
-                    <element signature="e#1232#1233#0" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.95072466">
+                  <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -59,58 +55,8 @@
             <entry file="file://$PROJECT_DIR$/src/game/map/BattleMap.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1193#1194#0" expanded="true" />
-                    <element signature="e#1228#1229#0" expanded="true" />
-                    <element signature="e#1564#1565#0" expanded="true" />
-                    <element signature="e#1587#1588#0" expanded="true" />
-                    <element signature="e#1641#1642#0" expanded="true" />
-                    <element signature="e#1684#1685#0" expanded="true" />
-                    <element signature="e#1740#1741#0" expanded="true" />
-                    <element signature="e#1786#1787#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MapContainer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/game/map/MapContainer.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FogOfWar.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
-                  <folding>
-                    <element signature="e#899#900#0" expanded="true" />
-                    <element signature="e#957#958#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LightSource.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3347826">
-                  <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
-                  <folding>
-                    <element signature="e#1075#1076#0" expanded="true" />
-                    <element signature="e#1103#1104#0" expanded="true" />
-                    <element signature="e#1137#1138#0" expanded="true" />
-                    <element signature="e#1167#1168#0" expanded="true" />
-                  </folding>
+                  <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -125,33 +71,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/game/map/Map.java">
+          <file leaf-file-name="FogOfWar.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
-                  <folding>
-                    <element signature="e#848#849#0" expanded="false" />
-                    <element signature="e#878#879#0" expanded="false" />
-                  </folding>
+                  <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="State.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/game/states/State.java">
+          <file leaf-file-name="LightSource.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                    <element signature="e#273#274#0" expanded="false" />
-                    <element signature="e#301#302#0" expanded="false" />
-                    <element signature="e#327#328#0" expanded="false" />
-                    <element signature="e#352#353#0" expanded="false" />
-                    <element signature="e#389#390#0" expanded="false" />
-                    <element signature="e#425#426#0" expanded="false" />
-                  </folding>
+                  <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -170,14 +105,12 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="BatClient.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="BatClient.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/BatClient.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.36956522">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -199,8 +132,20 @@
             <entry file="file://$PROJECT_DIR$/src/game/map/MapEditor.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="189" column="7" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
+                  <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -208,24 +153,9 @@
           <file leaf-file-name="PlayerInterface.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/game/gui/PlayerInterface.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.827586">
-                  <caret line="163" column="77" selection-start-line="163" selection-start-column="77" selection-end-line="163" selection-end-column="77" />
-                  <folding>
-                    <element signature="e#1848#1849#0" expanded="true" />
-                    <element signature="e#1875#1876#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.67971015">
-                  <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -306,11 +236,11 @@
         <option value="$PROJECT_DIR$/src/game/states/StateMachine.java" />
         <option value="$PROJECT_DIR$/src/game/map/BattleMap.java" />
         <option value="$PROJECT_DIR$/src/game/gui/PlayerInterface.java" />
-        <option value="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
         <option value="$PROJECT_DIR$/src/game/FogOfWar.java" />
         <option value="$PROJECT_DIR$/src/game/map/MapContainer.java" />
         <option value="$PROJECT_DIR$/src/game/LightSource.java" />
         <option value="$PROJECT_DIR$/src/game/characters/Player.java" />
+        <option value="$PROJECT_DIR$/src/game/gui/AdminInterface.java" />
       </list>
     </option>
   </component>
@@ -1001,6 +931,7 @@
       <workItem from="1449501926139" duration="29472000" />
       <workItem from="1449588578161" duration="1640000" />
       <workItem from="1449648968895" duration="12953000" />
+      <workItem from="1449701456109" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="Started Doing Some Interface">
       <created>1449322081583</created>
@@ -1072,7 +1003,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143575000" />
+    <option name="totallyTimeSpent" value="145310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1090,6 +1021,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15724947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1097,15 +1029,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1176,10 +1107,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="147" column="13" selection-start-line="135" selection-start-column="12" selection-end-line="147" selection-end-column="13" />
-          <folding>
-            <element signature="e#1848#1849#0" expanded="true" />
-            <element signature="e#1875#1876#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1428,30 +1356,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
-          <folding>
-            <element signature="e#848#849#0" expanded="false" />
-            <element signature="e#878#879#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/states/State.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#273#274#0" expanded="false" />
-            <element signature="e#301#302#0" expanded="false" />
-            <element signature="e#327#328#0" expanded="false" />
-            <element signature="e#352#353#0" expanded="false" />
-            <element signature="e#389#390#0" expanded="false" />
-            <element signature="e#425#426#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,53 +1376,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.592592">
           <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/states/StateMachine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/characters/CharacterSheet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gui/AdminInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="215" column="46" selection-start-line="215" selection-start-column="46" selection-end-line="215" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/map/MapEditor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="189" column="7" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
+          <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/BatClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1528,76 +1398,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/map/BattleMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1193#1194#0" expanded="true" />
-            <element signature="e#1228#1229#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1641#1642#0" expanded="true" />
-            <element signature="e#1684#1685#0" expanded="true" />
-            <element signature="e#1740#1741#0" expanded="true" />
-            <element signature="e#1786#1787#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gui/PlayerInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.827586">
-          <caret line="163" column="77" selection-start-line="163" selection-start-column="77" selection-end-line="163" selection-end-column="77" />
-          <folding>
-            <element signature="e#1848#1849#0" expanded="true" />
-            <element signature="e#1875#1876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/map/MapContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/FogOfWar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
-          <folding>
-            <element signature="e#899#900#0" expanded="true" />
-            <element signature="e#957#958#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3347826">
-          <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
-          <folding>
-            <element signature="e#1075#1076#0" expanded="true" />
-            <element signature="e#1103#1104#0" expanded="true" />
-            <element signature="e#1137#1138#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-          </folding>
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/characters/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67971015">
-          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/characters/CharacterSheet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/map/BattleMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/map/MapContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46811596">
+          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2510#2511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/LightSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/states/StateMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/BatClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36956522">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gui/AdminInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.95072466">
+          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1659,7 +1549,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
