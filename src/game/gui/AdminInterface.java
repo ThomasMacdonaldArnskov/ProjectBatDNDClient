@@ -9,6 +9,7 @@ import game.objects.PlayerLobby;
 import game.objects.PlayerStatistics;
 import game.states.State;
 import game.states.StateMachine;
+import net.ClientChannelHandler;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.*;
@@ -27,11 +28,17 @@ public class AdminInterface extends StateMachine {
     private Font regular = GraphicsMethods.getFont(12);
     private BattleMap battleMap;
 
+    public static AdminInterface adminInterface;
+
     public AdminInterface(Point interfacePosition) {
         super("AdminInterface");
         this.interfacePosition = interfacePosition;
+        AdminInterface.adminInterface = this;
     }
 
+    public BattleMap getBattleMap() {
+        return battleMap;
+    }
 
     @Override
     public void init(GameContainer gc) throws SlickException {
@@ -41,14 +48,32 @@ public class AdminInterface extends StateMachine {
         lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 205, (int) interfacePosition.getY() + 250), 270);
         pStats = new PlayerStatistics(new Point((int) interfacePosition.getX() - 135, (int) interfacePosition.getY() - 215));
         initStates();
-        initState(STATE_INACTIVE, gc);
+        stateInits(STATE_INACTIVE, gc);
         for (PlayerInterface pi : players) {
             pi.init(gc);
         }
     }
 
+    public GameContainer gcStored;
+
     @Override
     public void update(GameContainer gameContainer, int j) throws SlickException {
+        this.gcStored = gameContainer;
+        if (gameContainer.getInput().isKeyDown(Input.KEY_1)) {
+            ClientChannelHandler.ping(new FiducialTransfer(24l, true,
+                    new Point(gameContainer.getInput().getMouseX(),
+                            gameContainer.getInput().getMouseY())));
+        }
+        if (gameContainer.getInput().isKeyDown(Input.KEY_2)) {
+            ClientChannelHandler.ping(new FiducialTransfer(4l, true,
+                    new Point(gameContainer.getInput().getMouseX(),
+                            gameContainer.getInput().getMouseY())));
+        }
+        if (gameContainer.getInput().isKeyDown(Input.KEY_3)) {
+            ClientChannelHandler.ping(new FiducialTransfer(9l, true,
+                    new Point(gameContainer.getInput().getMouseX(),
+                            gameContainer.getInput().getMouseY())));
+        }
         updateState(gameContainer, j);
         for (int i = 0; i < players.length; i++) {
             players[i].update(gameContainer, i);
@@ -96,6 +121,7 @@ public class AdminInterface extends StateMachine {
             @Override
             public void initState(GameContainer gc) {
                 startGame.setVisible(true);
+                battleMap.setFoWBool(true);
                 for (PlayerInterface pi : players) {
                     try {
                         pi.init(gc);
@@ -107,6 +133,12 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public void updateState(GameContainer gc, int j) {
+                try {
+                    battleMap.updateGame(gc, j);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
+
                 for (int i = 0; i < players.length; i++) {
                     if (players[i].getCharacter() != null) {
                         lobby.update(i, players[i].getCharacter());
@@ -126,7 +158,7 @@ public class AdminInterface extends StateMachine {
                 g.popTransform();
                 try {
                     battleMap.getMapContainer().setXY(140, 125);
-                    battleMap.getMapContainer().render(gc, g);
+                    battleMap.renderGame(gc, g);
 
                 } catch (SlickException e) {
                     e.printStackTrace();
@@ -171,12 +203,20 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public void updateState(GameContainer gc, int i) {
-
+                try {
+                    battleMap.updateGame(gc, i);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void renderState(GameContainer gc, Graphics g) {
-
+                try {
+                    battleMap.renderGame(gc, g);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -191,7 +231,7 @@ public class AdminInterface extends StateMachine {
         });
         setInactiveState(new State(STATE_INACTIVE) {
             private Button startGame = new Button(new Point(742, 700), 270, 50, 0, "Start Game", () -> {
-                setCurrentState(STATE_WAITING);
+                stateInits(STATE_WAITING, gcStored);
             }, Button.standardButtonGraphics(), true);
 
             @Override

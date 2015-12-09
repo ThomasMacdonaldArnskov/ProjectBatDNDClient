@@ -2,9 +2,6 @@ package game;
 
 import game.map.BattleMap;
 import org.newdawn.slick.*;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,53 +11,42 @@ public class FogOfWar extends BasicGame {
     private boolean lightingOn = true;
 
     private SpriteSheet tiles;
-    private int[][] map = new int[BattleMap.WIDTH][BattleMap.HEIGHT];
 
     private float[][][] lightValue = new float[BattleMap.WIDTH + 1][BattleMap.HEIGHT + 1][3];
     private List<LightSource> lights = new ArrayList<>();
 
-    private LightSource fiducialLight;
-    private LightSource testLight;
+    private BattleMap bm;
+    private int xPos;
+    private int yPos;
 
-    private float lightStrength = 4.9f;
-
-    private int testLightX = 700;
-    private int testLightY = 500;
-
-    public FogOfWar() {
+    public FogOfWar(BattleMap bm) {
         super("Fog Of War");
+        this.bm = bm;
     }
 
 
     public void init(GameContainer container) throws SlickException {
         tiles = new SpriteSheet("assets/tiles.png", 32, 32);
-
         generateMap();
     }
 
 
-    private void generateMap() {
-
-        for (int y = 0; y < BattleMap.HEIGHT; y++) {
-            for (int x = 0; x < BattleMap.WIDTH; x++) {
-                map[x][y] = 0;
-            }
+    public void addLightSource(LightSource ls) {
+        if (!lights.contains(ls)) {
+            lights.add(ls);
         }
+    }
 
+    public void removeLightSource(LightSource ls) {
+        if (lights.contains(ls)) lights.remove(ls);
+    }
+
+    private void generateMap() {
         lights.clear();
-
-        //SO THAT IT DRAWS THE LIGHT SOURCE ON THE FIDUCIAL POSITION!
-        //fiducialLight = new LightSource((int) ClientChannelHandler.character.getFiducial().getPosition().getX(), (int) ClientChannelHandler.character.getFiducial().getPosition().getY(), lightStrength, Color.lightGray);
-        //lights.add(fiducialLight);
-
-        testLight = new LightSource(testLightX, testLightY, lightStrength, Color.white);
-        lights.add(testLight);
-
         updateLightMap();
     }
 
     private void updateLightMap() {
-
         for (int y = 0; y < BattleMap.HEIGHT + 1; y++) {
             for (int x = 0; x < BattleMap.WIDTH + 1; x++) {
 
@@ -71,9 +57,11 @@ public class FogOfWar extends BasicGame {
 
                 //THEN ADD THE EFFECT
                 for (int i = 0; i < lights.size(); i++) {
-                    float[] effect = (lights.get(i)).getLightEffectAtLocation(x, y);
-                    for (int component = 0; component < 3; component++) {
-                        lightValue[x][y][component] += effect[component];
+                    if ((lights.get(i)).isEnabled()) {
+                        float[] effect = (lights.get(i)).getLightEffectAtLocation(x, y);
+                        for (int component = 0; component < 3; component++) {
+                            lightValue[x][y][component] += effect[component];
+                        }
                     }
                 }
 
@@ -88,10 +76,7 @@ public class FogOfWar extends BasicGame {
     }
 
     public void update(GameContainer container, int delta) throws SlickException {
-
-        //fiducialLight.setLightLocation((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),(int) ClientChannelHandler.character.getFiducial().getPosition().getY());
-
-        if (container.getInput().isKeyPressed(Input.KEY_L)) {
+        /*if (container.getInput().isKeyPressed(Input.KEY_L)) {
             lightingOn = !lightingOn;
         }
         if (container.getInput().isKeyDown(Input.KEY_A)) {
@@ -117,7 +102,11 @@ public class FogOfWar extends BasicGame {
             testLightY += 1;
             testLight.setLightLocation(testLightX, testLightY);
             updateLightMap();
-        }
+        }*/
+        //fiducialLight.setLightLocation((int) ClientChannelHandler.character.getFiducial().getPosition().getX(),(int) ClientChannelHandler.character.getFiducial().getPosition().getY());
+        this.xPos = this.bm.getMapContainer().getxPos();
+        this.yPos = this.bm.getMapContainer().getyPos();
+        updateLightMap();
 
     }
 
@@ -126,10 +115,10 @@ public class FogOfWar extends BasicGame {
 
         for (int y = 0; y < BattleMap.HEIGHT; y++) {
             for (int x = 0; x < BattleMap.WIDTH; x++) {
-                int tile = map[x][y];
+                int tile = bm.getMapContainer().getCurrentMap().getMap()[x][y];
                 Image image = tiles.getSubImage(tile % BattleMap.SPRITESHEET, tile / BattleMap.SPRITESHEET);
 
-                /*if (lightingOn) {
+                if (lightingOn) {
                     image.setColor(Image.TOP_LEFT, lightValue[x][y][0], lightValue[x][y][1], lightValue[x][y][2], 1);
                     image.setColor(Image.TOP_RIGHT, lightValue[x + 1][y][0], lightValue[x + 1][y][1], lightValue[x + 1][y][2], 1);
                     image.setColor(Image.BOTTOM_RIGHT, lightValue[x + 1][y + 1][0], lightValue[x + 1][y + 1][1], lightValue[x + 1][y + 1][2], 1);
@@ -140,14 +129,11 @@ public class FogOfWar extends BasicGame {
                     image.setColor(Image.TOP_RIGHT, light, light, light, 1);
                     image.setColor(Image.BOTTOM_RIGHT, light, light, light, 1);
                     image.setColor(Image.BOTTOM_LEFT, light, light, light, 1);
-                }*/
-                image.drawEmbedded(x * BattleMap.SPRITESIZE, y * BattleMap.SPRITESIZE, BattleMap.SPRITESIZE, BattleMap.SPRITESIZE);
+                }
+                image.drawEmbedded(xPos + x * BattleMap.SPRITESIZE, yPos + y * BattleMap.SPRITESIZE,
+                        BattleMap.SPRITESIZE, BattleMap.SPRITESIZE);
             }
         }
         tiles.endUse();
-    }
-
-    public void setMap(int[][] map) {
-        this.map = map;
     }
 }

@@ -75,7 +75,7 @@ public abstract class StateMachine extends BasicGame {
         super(title);
     }
 
-    public void initState(int state, GameContainer gc) {
+    public void stateInits(int state, GameContainer gc) {
         currentState = state;
         switch (currentState) {
             case STATE_INACTIVE:

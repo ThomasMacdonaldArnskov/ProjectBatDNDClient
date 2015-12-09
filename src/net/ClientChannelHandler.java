@@ -29,6 +29,23 @@ public class ClientChannelHandler extends ChannelHandler {
     public void channelRegistered(ChannelHandlerContext ctx) {
     }
 
+    public static void ping(FiducialTransfer ping) {
+        BatClient.batClient.pingFiducial(ping);
+        boolean notHere = true;
+        for (FiducialTransfer ft : fiducials) {
+            if (ft.isSame((ping).getId())) {
+                ft.update(ping);
+                System.out.println((ping).getPosition());
+                notHere = false;
+            }
+        }
+        if (notHere) {
+            add.add(ping);
+        }
+        fiducials.addAll(add.stream().collect(Collectors.toList()));
+        add.clear();
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext context, Object received) throws Exception {
         if (received instanceof TransferableObject) {

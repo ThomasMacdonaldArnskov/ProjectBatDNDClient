@@ -17,8 +17,6 @@ import java.util.logging.Logger;
 
 public class BatClient extends BasicGame {
 
-    private FogOfWar fogOfWar = new game.FogOfWar();
-
     private NetworkClient client;
     private AdminInterface adminInterface;
 

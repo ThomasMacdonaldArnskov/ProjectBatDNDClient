@@ -1,9 +1,12 @@
 package game.map;
 
 import commons.transfer.objects.BlobTransfer;
-import game.characters.HeroClass;
-import org.newdawn.slick.*;
+import game.FogOfWar;
+import game.LightSource;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
 public class BattleMap extends BasicGame {
 
@@ -25,6 +28,8 @@ public class BattleMap extends BasicGame {
     private MapEditor mapEditor;
     private MapContainer mapContainer;
     int[][] map;
+    private FogOfWar fogOfWar;
+    private boolean fow = false;
 
     public BattleMap(String title) {
         super(title);
@@ -40,8 +45,21 @@ public class BattleMap extends BasicGame {
         this.mapContainer = new MapContainer(10, 10);
         mapEditor = new MapEditor("MapEditor", mapContainer);
         mapEditor.init(gc);
+        fogOfWar = new FogOfWar(this);
+        fogOfWar.init(gc);
     }
 
+    public void setFoWBool(boolean b) {
+        fow = b;
+    }
+
+    public void lightInTheDarkness(LightSource ls) {
+        fogOfWar.addLightSource(ls);
+    }
+
+    public void noLightintheDarkness(LightSource ls) {
+        fogOfWar.removeLightSource(ls);
+    }
 
     public boolean blobInput(BlobTransfer blob) {
         if (mapContainer.subHit((int) blob.getPosition().getX(), (int) blob.getPosition().getY())) {
@@ -55,6 +73,7 @@ public class BattleMap extends BasicGame {
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
+        fogOfWar.update(gc, i);
         mapEditor.update(gc, i);
         //MAP TEST
         updateMap();
@@ -66,6 +85,22 @@ public class BattleMap extends BasicGame {
         mapEditor.render(gc, g);
         mapContainer.render(gc, g);
         mapContainer.renderMapSelector(16, 538, g);
+        if (fow) {
+            fogOfWar.render(gc, g);
+        }
+    }
+
+    public void updateGame(GameContainer gc, int i) throws SlickException {
+        fogOfWar.update(gc, i);
+        updateMap();
+        map = mapContainer.getCurrentMap().getMap();
+    }
+
+    public void renderGame(GameContainer gc, Graphics g) throws SlickException {
+        mapContainer.render(gc, g);
+        if (fow) {
+            fogOfWar.render(gc, g);
+        }
     }
 
     public void updateMap() {

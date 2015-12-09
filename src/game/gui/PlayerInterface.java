@@ -5,6 +5,7 @@ import commons.transfer.objects.FiducialTransfer;
 import game.characters.CharacterSheet;
 import game.characters.HeroClass;
 import game.characters.NameRaceGenerator;
+import game.characters.Player;
 import game.objects.Button;
 import game.states.State;
 import game.states.StateMachine;
@@ -24,6 +25,7 @@ public class PlayerInterface extends StateMachine {
 
     private Point interfacePosition;
     private CharacterSheet character;
+    private Player player;
 
     private int rotation = 0;
     private FiducialTransfer fiducial;
@@ -43,7 +45,7 @@ public class PlayerInterface extends StateMachine {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        initState(STATE_WAITING, gameContainer);
+        stateInits(STATE_WAITING, gameContainer);
     }
 
     @Override
@@ -53,7 +55,11 @@ public class PlayerInterface extends StateMachine {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        renderState(gameContainer,graphics);
+        renderState(gameContainer, graphics);
+    }
+
+    PlayerInterface getInstance() {
+        return this;
     }
 
     @Override
@@ -155,12 +161,23 @@ public class PlayerInterface extends StateMachine {
 
             @Override
             public void updateState(GameContainer gc, int i) {
+                if (player == null) player = new Player("Player", character);
+                try {
+                    player.update(gc, i);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
 
             }
 
             @Override
             public void renderState(GameContainer gc, Graphics g) {
-
+                if (player == null) player = new Player("Player", character);
+                try {
+                    player.render(gc, g);
+                } catch (SlickException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override

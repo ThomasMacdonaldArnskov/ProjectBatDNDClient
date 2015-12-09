@@ -49,6 +49,17 @@ public class MapContainer {
         return new Point(x, y);
     }
 
+    public Point getPosition(int mouseX, int mouseY) {
+        int x1 = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ? ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
+        int y1 = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ? ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
+
+        if (x1 == -1 || y1 == -1) return new Point(-1, -1);
+        int x = xPos + x1 * BattleMap.SPRITESIZE + BattleMap.SPRITESIZE / 2;
+        int y = yPos + y1 * BattleMap.SPRITESIZE + BattleMap.SPRITESIZE / 2;
+
+        return new Point(x, y);
+    }
+
     public void addMap(Map map) {
         maps.add(map);
     }
@@ -120,12 +131,16 @@ public class MapContainer {
             g.setFont(font);
 
             for (int i = folderpos; i < 4 + folderpos; i++) {
-                g.drawRect(x + (size * BattleMap.WIDTH + 20) * (i - folderpos) - 5, y - 5, (size * BattleMap.WIDTH + 13), (size * BattleMap.HEIGHT + 13));
+                g.drawRect(x + (size * BattleMap.WIDTH + 20) * (i - folderpos) - 5, y - 5,
+                        (size * BattleMap.WIDTH + 13), (size * BattleMap.HEIGHT + 13));
                 if (i < 3 + folderpos) {
                     if (maps.size() > i && maps.get(i) != null)
-                        renderMap(size, maps.get(i).getMap(), x + ((size * BattleMap.WIDTH + 20) * (i - folderpos)), y);
+                        renderMap(size, maps.get(i).getMap(),
+                                x + ((size * BattleMap.WIDTH + 20) * (i - folderpos)), y);
                     else {
-                        g.drawString("+", x + ((size * BattleMap.WIDTH + 20) * (i - folderpos)) + (size * BattleMap.WIDTH) / 2 - g.getFont().getWidth("+") / 2,
+                        g.drawString("+",
+                                x + ((size * BattleMap.WIDTH + 20) * (i - folderpos)) +
+                                        (size * BattleMap.WIDTH) / 2 - g.getFont().getWidth("+") / 2,
                                 y + (size * BattleMap.HEIGHT) / 2 - g.getFont().getHeight("+") / 2);
                         currentI = i + 1;
                         break;

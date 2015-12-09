@@ -12,6 +12,7 @@ public class LightSource {
     private float _xPos, _yPos;
     private float _lightStrength;
     private Color _color;
+    private boolean enabled;
 
     /**********************************
      * CONSTRUCTORS
@@ -24,15 +25,25 @@ public class LightSource {
         this._yPos = yPos;
         this._lightStrength = lightStrength;
         this._color = color;
+        this.enabled = true;
     }
+
     //CONSTRUCTOR FOR INT VALUES
     public LightSource(int xPos, int yPos, float lightStrength, Color color) {
 
-        this._xPos = (float) xPos/ (float) BattleMap.SPRITESIZE;
-        this._yPos = (float) yPos/ (float) BattleMap.SPRITESIZE;
+        this._xPos = (float) xPos / (float) BattleMap.SPRITESIZE;
+        this._yPos = (float) yPos / (float) BattleMap.SPRITESIZE;
         this._lightStrength = lightStrength;
         this._color = color;
 
+    }
+
+    public void setEnabled(boolean bo) {
+        enabled = bo;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
     /**********************************
@@ -47,8 +58,8 @@ public class LightSource {
 
     //OVERLOADED FOR INT USE
     public void setLightLocation(int x, int y) {
-        this._xPos = (float) x/ (float) BattleMap.SPRITESIZE;
-        this._yPos = (float) y/ (float) BattleMap.SPRITESIZE;
+        this._xPos = x / (float) BattleMap.SPRITESIZE;
+        this._yPos = y / (float) BattleMap.SPRITESIZE;
     }
 
     //GET THE EFFECT AT A SPECIFIC LOCATION
