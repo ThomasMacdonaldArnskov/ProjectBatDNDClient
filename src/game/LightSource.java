@@ -58,8 +58,8 @@ public class LightSource {
 
     //OVERLOADED FOR INT USE
     public void setLightLocation(int x, int y) {
-        this._xPos = x / (float) BattleMap.SPRITESIZE;
-        this._yPos = y / (float) BattleMap.SPRITESIZE;
+        this._xPos =x /  (float)BattleMap.SPRITESIZE - _lightStrength;
+        this._yPos = y / (float) BattleMap.SPRITESIZE - _lightStrength;
     }
 
     //GET THE EFFECT AT A SPECIFIC LOCATION

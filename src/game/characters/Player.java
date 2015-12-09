@@ -32,10 +32,15 @@ public class Player extends BasicGame {
                 getBattleMap().getMapContainer().getPosition(
                 (int) cs.getFiducial().getPosition().getX(),
                 (int) cs.getFiducial().getPosition().getY());
+        boolean nonMovable = AdminInterface.adminInterface.getBattleMap().getMapContainer().getTileID(
+                (int) cs.getFiducial().getPosition().getX(),
+                (int) cs.getFiducial().getPosition().getY());
         this.xPos = (int) point.getX();
         this.yPos = (int) point.getY();
         if (xPos == -1 || yPos == -1) lightSource.setEnabled(false);
         else lightSource.setEnabled(true);
+
+        if (!nonMovable)
         lightSource.setLightLocation(xPos, yPos);
     }
 
