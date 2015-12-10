@@ -81,7 +81,7 @@ public class BatClient extends BasicGame {
         try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new BatClient());
-            appgc.setDisplayMode(BatClient.WIDTH, BatClient.HEIGHT, false);
+            appgc.setDisplayMode(BatClient.WIDTH, BatClient.HEIGHT, true);
             appgc.setTargetFrameRate(60);
             appgc.setShowFPS(false);
             appgc.start();
