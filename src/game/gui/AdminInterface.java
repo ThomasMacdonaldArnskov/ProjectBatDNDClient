@@ -198,7 +198,6 @@ public class AdminInterface extends StateMachine {
         setActiveState(new State(STATE_ACTIVE) {
             @Override
             public void initState(GameContainer gc) {
-
             }
 
             @Override

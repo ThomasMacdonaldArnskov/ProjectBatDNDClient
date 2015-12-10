@@ -49,6 +49,12 @@ public class MapContainer {
         return new Point(x, y);
     }
 
+    public boolean getTileID(int mouseX, int mouseY) {
+        int x = (mouseX - xPos) / BattleMap.SPRITESIZE;
+        int y = (mouseY - yPos) / BattleMap.SPRITESIZE;
+        return !(x > 0 && x < BattleMap.WIDTH && y > 0 && y < BattleMap.HEIGHT) || (getCurrentMap().getMap()[x][y] == 112);
+    }
+
     public Point getPosition(int mouseX, int mouseY) {
         int x1 = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ? ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
         int y1 = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ? ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
