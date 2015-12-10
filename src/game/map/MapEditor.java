@@ -171,7 +171,7 @@ public class MapEditor extends BasicGame {
                 tileSelector(tileBank.returnedMultiArr());
                 //CHECK IF THE SELECTED TILE GROUP IS PLACED WITHIN THE GRID OF THE MAP
                 if (y1 < mapContainer.getCurrentMap().getMap()[0].length - tileStore.get(0).length + 1
-                        && x1 < mapContainer.getCurrentMap().getMap().length - tileStore.get(0)[0].length +1) {
+                        && x1 < mapContainer.getCurrentMap().getMap().length - tileStore.get(0)[0].length + 1) {
                     for (int i = 0; i < tileStore.get(0).length; i++) {
                         for (int j = 0; j < tileStore.get(0)[0].length; j++) {
                             mapContainer.getCurrentMap().getMap()[j + x1][i + y1] = tileStore.get(0)[i][j];
