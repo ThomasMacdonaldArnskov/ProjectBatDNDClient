@@ -32,6 +32,10 @@ public class PlayerInterface extends StateMachine {
     private CharacterChooser chooser;
     private Font font = GraphicsMethods.getFont(14);
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public PlayerInterface(Point interfacePosition, int rotation) {
         super("PlayerInterface");
         this.interfacePosition = interfacePosition;

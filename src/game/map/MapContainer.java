@@ -1,11 +1,19 @@
 package game.map;
 
+import game.gui.AdminInterface;
 import game.objects.Button;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Point;
+import utils.AreaPulse;
 import utils.GraphicsMethods;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MapContainer {
     private SpriteSheet tiles;
@@ -16,8 +24,9 @@ public class MapContainer {
     private Button up;
     private Button down;
     private Button saveMap;
-
     private int folderpos = 0;
+    private AreaPulse startGame;
+    private boolean gameSTART = false;
 
     public void setXY(int xPos, int yPos) {
         this.xPos = xPos;
@@ -33,31 +42,94 @@ public class MapContainer {
             maps.add(new Map());
         }
         try {
-            tiles = new SpriteSheet("assets/tiles.png", 32, 32);
+            tiles = new SpriteSheet("assets/tiles2.png", 32, 32);
         } catch (SlickException e) {
             e.printStackTrace();
         }
         up = new Button(new java.awt.Point(xPos, yPos), 45, 45, "UP");
         down = new Button(new java.awt.Point(xPos, yPos), 45, 45, "DOWN");
         saveMap = new Button(new java.awt.Point(xPos, yPos), 45, 45, "SAVE");
+        startGame = new AreaPulse("Place Hero To Start", new java.awt.Point(412, 243), 30);
     }
 
+
     public Point getMapPos(int mouseX, int mouseY) {
-        int x = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ? ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
-        int y = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ? ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
+        int x = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ?
+                ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
+        int y = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ?
+                ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
 
         return new Point(x, y);
     }
 
-    public boolean getTileID(int mouseX, int mouseY) {
+    public boolean getTileBool(int mouseX, int mouseY) {
         int x = (mouseX - xPos) / BattleMap.SPRITESIZE;
         int y = (mouseY - yPos) / BattleMap.SPRITESIZE;
-        return !(x > 0 && x < BattleMap.WIDTH && y > 0 && y < BattleMap.HEIGHT) || (getCurrentMap().getMap()[x][y] == 112);
+        return !(x > 0 && x < BattleMap.WIDTH && y > 0 && y < BattleMap.HEIGHT) ||
+                (getCurrentMap().getMap()[x][y] == 112) ||
+                (getCurrentMap().getMap()[x][y] == 92) ||
+                (getCurrentMap().getMap()[x][y] == 93) ||
+                (getCurrentMap().getMap()[x][y] == 104) ||
+                (getCurrentMap().getMap()[x][y] == 105) ||
+                (getCurrentMap().getMap()[x][y] == 113) ||
+                (getCurrentMap().getMap()[x][y] == 114) ||
+                (getCurrentMap().getMap()[x][y] == 115) ||
+                (getCurrentMap().getMap()[x][y] == 116) ||
+                (getCurrentMap().getMap()[x][y] == 117) ||
+                (getCurrentMap().getMap()[x][y] == 124) ||
+                (getCurrentMap().getMap()[x][y] == 125) ||
+                (getCurrentMap().getMap()[x][y] == 126) ||
+                (getCurrentMap().getMap()[x][y] == 127) ||
+                (getCurrentMap().getMap()[x][y] == 128) ||
+                (getCurrentMap().getMap()[x][y] == 129) ||
+                (getCurrentMap().getMap()[x][y] == 136) ||
+                (getCurrentMap().getMap()[x][y] == 137) ||
+                (getCurrentMap().getMap()[x][y] == 138) ||
+                (getCurrentMap().getMap()[x][y] == 139) ||
+                (getCurrentMap().getMap()[x][y] == 140) ||
+                (getCurrentMap().getMap()[x][y] == 141) ||
+                (getCurrentMap().getMap()[x][y] == 142) ||
+                (getCurrentMap().getMap()[x][y] == 108);
+    }
+
+    public int getTileID(int mouseX, int mouseY) {
+
+        int x = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ?
+                ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
+        int y = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ?
+                ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
+        if (x >= 0 && y >= 0)
+            return getCurrentMap().getMap()[x][y];
+        else return -1;
+    }
+
+    public void nextMap() {
+        currentMap++;
+    }
+
+    public void replay() {
+        currentMap = getRandom(new int[]{
+                0, 2
+        });
+        if (currentMap == 0) {
+            startGame.setCenterPosition(new java.awt.Point(412, 243));
+        }
+        if (currentMap == 2) {
+            startGame.setCenterPosition(new java.awt.Point(325, 479));
+        }
+        gameSTART = false;
+    }
+
+    public static int getRandom(int[] array) {
+        int rnd = new Random().nextInt(array.length);
+        return array[rnd];
     }
 
     public Point getPosition(int mouseX, int mouseY) {
-        int x1 = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ? ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
-        int y1 = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ? ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
+        int x1 = (mouseX - xPos) / BattleMap.SPRITESIZE < BattleMap.WIDTH ?
+                ((mouseX - xPos) / BattleMap.SPRITESIZE) : -1;
+        int y1 = (mouseY - yPos) / BattleMap.SPRITESIZE < BattleMap.HEIGHT ?
+                ((mouseY - yPos) / BattleMap.SPRITESIZE) : -1;
 
         if (x1 == -1 || y1 == -1) return new Point(-1, -1);
         int x = xPos + x1 * BattleMap.SPRITESIZE + BattleMap.SPRITESIZE / 2;
@@ -96,6 +168,7 @@ public class MapContainer {
             }
         }
         tiles.endUse();
+
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
@@ -110,6 +183,28 @@ public class MapContainer {
             }
             tiles.endUse();
         }
+        g.resetTransform();
+    }
+
+    public void renderStarter(Graphics g) throws SlickException {
+        if (!gameSTART) {
+            startGame.setActive(true);
+            startGame.setColor(new Color(255, 255, 255, 255));
+            startGame.render(g);
+
+        }
+    }
+
+    public boolean canStartGame() {
+        return gameSTART;
+    }
+
+    public AreaPulse getStarter() {
+        return startGame;
+    }
+
+    public void setStartGame(boolean bo) {
+        gameSTART = bo;
     }
 
     int size;
@@ -182,14 +277,11 @@ public class MapContainer {
                 if (i < 3 + folderpos)
                     if (maps.size() > i && maps.get(i) != null) {
                         currentMap = i;
-                        System.out.println("XASDHERE");
                     } else {
-                        System.out.println("HERE");
                         maps.add(new Map());
                         currentMap = maps.size() - 1;
                     }
                 else {
-                    System.out.println("FA");
                     maps.add(new Map());
                     currentMap = maps.size() - 1;
                     return true;

@@ -14,9 +14,14 @@ public class LightSource {
     private Color _color;
     private boolean enabled;
 
+    public float get_lightStrength() {
+        return _lightStrength;
+    }
+
     /**********************************
      * CONSTRUCTORS
      **********************************/
+
 
     //CONSTRUCTOR FOR FLOAT VALUES
     public LightSource(float xPos, float yPos, float lightStrength, Color color) {
@@ -50,16 +55,10 @@ public class LightSource {
      * METHODS
      **********************************/
 
-    //SETS THE LOCATION OF A LIGHT
-    public void setLightLocation(float x, float y) {
-        this._xPos = x;
-        this._yPos = y;
-    }
-
     //OVERLOADED FOR INT USE
-    public void setLightLocation(int x, int y) {
-        this._xPos =x /  (float)BattleMap.SPRITESIZE - _lightStrength;
-        this._yPos = y / (float) BattleMap.SPRITESIZE - _lightStrength;
+    public void setLightLocation(float x, float y) {
+        this._xPos = x / (float) BattleMap.SPRITESIZE;
+        this._yPos = y / (float) BattleMap.SPRITESIZE;
     }
 
     //GET THE EFFECT AT A SPECIFIC LOCATION

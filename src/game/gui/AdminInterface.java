@@ -2,6 +2,7 @@ package game.gui;
 
 import commons.transfer.objects.BlobTransfer;
 import commons.transfer.objects.FiducialTransfer;
+import game.characters.Player;
 import game.map.BattleMap;
 import game.objects.Button;
 import game.objects.PlayerAdminInterfaceButton;
@@ -19,7 +20,7 @@ import utils.GraphicsMethods;
 import java.awt.*;
 
 public class AdminInterface extends StateMachine {
-    private PlayerInterface[] players = new PlayerInterface[3];
+    private PlayerInterface[] players = new PlayerInterface[1];
     private PlayerLobby lobby;
     private PlayerStatistics pStats;
     private Point interfacePosition;
@@ -27,24 +28,38 @@ public class AdminInterface extends StateMachine {
     private Font title = GraphicsMethods.getFont(20);
     private Font regular = GraphicsMethods.getFont(12);
     private BattleMap battleMap;
-
+    private VictoryLooseScreen wLS;
     public static AdminInterface adminInterface;
+    private int wonLoose = 0;
+
+    public static final int PLAYING = 0;
+    public static final int WON = 1;
+    public static final int LOST = 2;
 
     public AdminInterface(Point interfacePosition) {
         super("AdminInterface");
         this.interfacePosition = interfacePosition;
         AdminInterface.adminInterface = this;
+        wLS = new VictoryLooseScreen();
     }
 
     public BattleMap getBattleMap() {
         return battleMap;
     }
 
+    public void setWinLoose(int con) {
+        this.wonLoose = con;
+    }
+
+    public Player getPlayers() {
+        return players[0].getPlayer();
+    }
+
     @Override
     public void init(GameContainer gc) throws SlickException {
         players[0] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, 75), 180);
-        players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
-        players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 75), 0);
+        //players[1] = new PlayerInterface(new Point(75, gc.getHeight() / 2), 90);
+        //players[2] = new PlayerInterface(new Point(gc.getWidth() / 2 - 75, gc.getHeight() - 75), 0);
         lobby = new PlayerLobby(new Point((int) interfacePosition.getX() - 205, (int) interfacePosition.getY() + 250), 270);
         pStats = new PlayerStatistics(new Point((int) interfacePosition.getX() - 135, (int) interfacePosition.getY() - 215));
         initStates();
@@ -82,6 +97,10 @@ public class AdminInterface extends StateMachine {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+        graphics.setLineWidth(10);
+        graphics.setColor(Color.white);
+        graphics.drawLine(gameContainer.getWidth() - 300, 0, gameContainer.getWidth() - 300, gameContainer.getHeight());
+
         renderState(gameContainer, graphics);
 
         if (currentState != STATE_INACTIVE) {
@@ -90,6 +109,10 @@ public class AdminInterface extends StateMachine {
                 pi.render(gameContainer, graphics);
             }
         }
+        if (wonLoose == 1)
+            wLS.render(true, graphics);
+        else if (wonLoose == 2)
+            wLS.render(false, graphics);
 
     }
 
@@ -207,12 +230,22 @@ public class AdminInterface extends StateMachine {
                 } catch (SlickException e) {
                     e.printStackTrace();
                 }
+
             }
 
             @Override
             public void renderState(GameContainer gc, Graphics g) {
                 try {
-                    battleMap.renderGame(gc, g);
+                    if (wonLoose == 0) {
+                        if (battleMap.getMapContainer().canStartGame()) {
+                            battleMap.renderGame(gc, g);
+                        } else {
+                            g.setColor(new Color(255, 255, 255, 100));
+                            battleMap.getMapContainer().getStarter().setActive(true);
+                            battleMap.getMapContainer().renderStarter(g);
+                        }
+                    }
+
                 } catch (SlickException e) {
                     e.printStackTrace();
                 }
@@ -220,11 +253,29 @@ public class AdminInterface extends StateMachine {
 
             @Override
             public boolean fiducialInput(FiducialTransfer fiducial) {
+
+                if (!battleMap.getMapContainer().canStartGame()) {
+                    if (battleMap.getMapContainer().getStarter().isInside(
+                            (int) fiducial.getPosition().getX(),
+                            (int) fiducial.getPosition().getY())) {
+                        battleMap.getMapContainer().setStartGame(true);
+                        return true;
+                    }
+                }
+
                 return false;
             }
 
             @Override
             public boolean blobInput(BlobTransfer blob) {
+                if (wonLoose != 0) {
+                    if (wLS.replay((int) blob.getPosition().getX(),
+                            (int) blob.getPosition().getY())) {
+                        battleMap.getMapContainer().replay();
+                        wonLoose = 0;
+                        return true;
+                    }
+                }
                 return false;
             }
         });

@@ -103,6 +103,8 @@ public class MapEditor extends BasicGame {
         mapButtons[51] = new MapButton(83);
         mapButtons[52] = new MapButton(94);
         mapButtons[53] = new MapButton(95);
+        mapButtons[54] = new MapButton(106);
+        mapButtons[55] = new MapButton(107);
 
         for (MapButton mapButton : mapButtons) {
             mapButton.setUiContainer(uiContainer);
@@ -120,7 +122,7 @@ public class MapEditor extends BasicGame {
         uiContainer = new uiContainer(containerX, containerY);
         tileBank.setSelectedID(selectedTileID);
         groupTileSelected = tileBank.singleOrGroupTiles();
-        mapButtons = new MapButton[54];
+        mapButtons = new MapButton[56];
         initializeButtons();
     }
 
@@ -194,6 +196,7 @@ public class MapEditor extends BasicGame {
         for (int i = 0; i < tmpTileStore.length; i++) {
             for (int j = 0; j < tmpTileStore[0].length; j++) {
                 tmpTileStore[i][j] = selectedTileID + j + i * 12;
+                System.out.println(selectedTileID + j + i * 12);
             }
         }
         tileStore.add(tmpTileStore);
@@ -270,6 +273,10 @@ public class MapEditor extends BasicGame {
             mapButtons[i + 50].setOffsetX(startXinContainer + i * 31);
             mapButtons[i + 50].setOffsetY(startYinContainer + 533);
         }
+        mapButtons[54].setOffsetX(startXinContainer + 31);
+        mapButtons[54].setOffsetY(startYinContainer + 590);
+        mapButtons[55].setOffsetX(startXinContainer);
+        mapButtons[55].setOffsetY(startYinContainer + 590);
     }
 
     public boolean selectTile(int x, int y) {
@@ -279,6 +286,7 @@ public class MapEditor extends BasicGame {
                 selectedTileID = mapButton.getTileNo();
                 tileBank.setSelectedID(selectedTileID);
                 groupTileSelected = tileBank.singleOrGroupTiles();
+                System.out.println(selectedTileID);
                 return true;
             }
         }

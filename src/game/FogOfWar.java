@@ -26,7 +26,7 @@ public class FogOfWar extends BasicGame {
 
 
     public void init(GameContainer container) throws SlickException {
-        tiles = new SpriteSheet("assets/tiles.png", 32, 32);
+        tiles = new SpriteSheet("assets/tiles2.png", 32, 32);
         generateMap();
     }
 

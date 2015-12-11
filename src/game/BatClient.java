@@ -67,9 +67,6 @@ public class BatClient extends BasicGame {
     public void render(GameContainer gc, Graphics g) throws SlickException {
         adminInterface.render(gc, g);
         //battleMap.render(gc, g);
-        g.setLineWidth(10);
-        g.setColor(Color.white);
-        g.drawLine(gc.getWidth() - 300, 0, gc.getWidth() - 300, gc.getHeight());
         if (!ClientChannelHandler.fiducials.isEmpty())
             ClientChannelHandler.fiducials.stream().filter(fi -> fi != null && fi.isActive()).forEach(fi -> g.drawOval(
                     (int) fi.getPosition().getX() - 5,
@@ -81,7 +78,7 @@ public class BatClient extends BasicGame {
         try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new BatClient());
-            appgc.setDisplayMode(BatClient.WIDTH, BatClient.HEIGHT, true);
+            appgc.setDisplayMode(BatClient.WIDTH, BatClient.HEIGHT, false);
             appgc.setTargetFrameRate(60);
             appgc.setShowFPS(false);
             appgc.start();

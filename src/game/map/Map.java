@@ -16,6 +16,7 @@ public class Map {
     public File fileDir;
     private int[][] map;
 
+
     public Map() {
         map = new int[BattleMap.WIDTH][BattleMap.HEIGHT];
         for (int[] ints : map) {
